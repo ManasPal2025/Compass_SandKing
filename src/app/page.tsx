@@ -201,13 +201,12 @@ export default function HomePage() {
                   </div>
 
                   <div className="md:col-span-1 text-right hidden md:block">
-                    <Link
-                      href={`/journal/${entry.slug}`}
-                      aria-label={`Read ${entry.title}`}
+                    <span
+                      aria-hidden="true"
                       className="text-base font-mono text-[#666159] group-hover:text-[#FAF9F6] transition-colors"
                     >
                       →
-                    </Link>
+                    </span>
                   </div>
                 </article>
               ))}
@@ -217,11 +216,11 @@ export default function HomePage() {
       </Section>
 
       {/* =========================================================================
-          05 — ARCHIVE TEASER
+          05 — ATLAS TEASER
           Asymmetric editorial image composition.
           Large imagery, rich highlights, photographic depth, clearly visible.
          ========================================================================= */}
-      <Section id="archive" spacing="lg" className="border-t border-[#1a1917]">
+      <Section id="atlas" spacing="lg" className="border-t border-[#1a1917]">
         <Container size="wide">
           <FadeIn>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-16 border-b border-[#201e1b] pb-6 sm:pb-8">
@@ -347,11 +346,11 @@ export default function HomePage() {
       </Section>
 
       {/* =========================================================================
-          06 — GARAGE TEASER
+          06 — MACHINES TEASER
           Machines as companions in Saraswat's story, NOT vehicle catalogue.
           Story visually comes first. Large, rich photography.
          ========================================================================= */}
-      <Section id="garage" spacing="default" className="border-t border-[#1a1917]">
+      <Section id="machines" spacing="default" className="border-t border-[#1a1917]">
         <Container>
           <FadeIn>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-16 border-b border-[#201e1b] pb-6 sm:pb-8">
@@ -364,7 +363,7 @@ export default function HomePage() {
                 </h2>
               </div>
               <Link
-                href="/garage"
+                href="/machines"
                 className="group flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#aba59c] hover:text-[#FAF9F6] transition-colors py-1"
               >
                 <span>Explore the collection</span>
@@ -384,14 +383,14 @@ export default function HomePage() {
                   />
 
                   <div className="space-y-2 sm:space-y-3">
-                    <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-[#736e65]">
+                    <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-[#aba59c]">
                       <span>{machine.type}</span>
                       <span>·</span>
                       <span className="text-[#c4a482]">{machine.role}</span>
                     </div>
 
                     <h3 className="text-2xl sm:text-3xl font-serif text-[#FAF9F6] group-hover:text-[#c4a482] transition-colors">
-                      <Link href={`/garage/${machine.slug}`}>{machine.name}</Link>
+                      <Link href={`/machines/${machine.slug}`}>{machine.name}</Link>
                     </h3>
 
                     <p className="text-base text-[#CBC5BB] font-light leading-relaxed">
@@ -399,12 +398,12 @@ export default function HomePage() {
                     </p>
 
                     <div className="pt-1">
-                      <Link
-                        href={`/garage/${machine.slug}`}
-                        className="inline-block py-1 text-xs font-mono uppercase tracking-wider text-[#c4a482] hover:text-[#FAF9F6] transition-colors"
+                      <span
+                        aria-hidden="true"
+                        className="inline-block py-1 text-xs font-mono uppercase tracking-wider text-[#c4a482] group-hover:text-[#FAF9F6] transition-colors"
                       >
                         Read machine lore →
-                      </Link>
+                      </span>
                     </div>
                   </div>
                 </article>

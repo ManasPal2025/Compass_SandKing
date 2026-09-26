@@ -15,7 +15,7 @@ export default function GaragePage() {
     <>
       <AtmosphereLayer variant="rain" />
       <ImmersivePageHero
-        kicker="06 / MACHINES & GEAR"
+        kicker="MACHINES & GEAR"
         title="Machines"
         description="Cars, motorcycles, cameras, and the gear that gives each kind of day its own character."
         imageSrc="/images/placeholders/garage_bike.jpg"
@@ -26,9 +26,10 @@ export default function GaragePage() {
       <Section id="machines-collection" spacing="default">
         <Container size="wide">
           <header className="mb-9 max-w-3xl">
-            <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#c4a482]">ONE COLLECTION, FOUR SHELVES</span>
+            <span className="text-xs font-mono uppercase tracking-[0.22em] text-[#c4a482]">ONE COLLECTION, FOUR SHELVES</span>
             <h2 className="mt-3 font-serif text-3xl text-[#f5f3ef] sm:text-4xl">The character matters as much as the machine.</h2>
-            <p className="mt-3 text-sm leading-relaxed text-[#aaa398]">Filter the sample profiles by what moves, what captures, and what helps prepare for the ride.</p>
+            <p className="mt-3 text-sm leading-relaxed text-[#c6c0b6]">Filter the sample profiles by what moves, what captures, and what helps prepare for the ride.</p>
+            <p className="mt-2 text-xs font-mono uppercase tracking-[0.14em] text-[#aba59c]">Vehicles and equipment in this collection are presented under mythical editorial names.</p>
           </header>
           <MachineCollection items={garageMachines} />
         </Container>

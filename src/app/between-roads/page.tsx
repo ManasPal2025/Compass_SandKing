@@ -18,7 +18,7 @@ export default function BetweenRoadsPage() {
     <>
       <AtmosphereLayer variant="sunray" />
       <ImmersivePageHero
-        kicker="07 / LIFE BETWEEN JOURNEYS"
+        kicker="LIFE BETWEEN JOURNEYS"
         title="Between Roads"
         description="The people, rituals, music, and small pleasures that make a life larger than its miles."
         imageSrc="/images/placeholders/archive_trail.jpg"
@@ -31,10 +31,10 @@ export default function BetweenRoadsPage() {
           <FadeIn>
             <div className="mb-8 flex flex-col gap-5 border-b border-[#26221d] pb-7 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
               <div className="max-w-2xl">
-              <span className="text-[10px] font-mono uppercase tracking-[0.24em] text-[#c4a482]">A LIFE IN MANY REGISTERS</span>
+              <span className="text-xs font-mono uppercase tracking-[0.24em] text-[#c4a482]">A LIFE IN MANY REGISTERS</span>
                 <h2 className="mt-3 font-serif text-3xl text-[#f5f3ef] sm:text-4xl">The things that make room for a fuller life.</h2>
               </div>
-              <Link href="/garage" className="inline-flex min-h-11 items-center gap-2 text-[10px] font-mono uppercase tracking-[0.16em] text-[#d0b18f] hover:text-white focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[#c4a482]">
+              <Link href="/machines" className="inline-flex min-h-11 items-center gap-2 text-xs font-mono uppercase tracking-[0.16em] text-[#d0b18f] hover:text-white focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[#c4a482]">
                 See the machines <span aria-hidden="true">→</span>
               </Link>
             </div>

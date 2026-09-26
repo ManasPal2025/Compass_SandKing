@@ -13,8 +13,8 @@ const journeyStops = [
   { id: "cold-open", number: "02", label: "Cold Open", image: "/images/placeholders/hero_road.jpg" },
   { id: "film", number: "03", label: "Road Film", image: "/images/placeholders/journal-pass.webp" },
   { id: "journal", number: "04", label: "Journal", image: "/images/placeholders/journal-pass.webp" },
-  { id: "archive", number: "05", label: "Archive", image: "/images/placeholders/archive-ridge.webp" },
-  { id: "garage", number: "06", label: "Garage", image: "/images/placeholders/garage_bike.jpg" },
+  { id: "atlas", number: "05", label: "Atlas", image: "/images/placeholders/archive-ridge.webp" },
+  { id: "machines", number: "06", label: "Machines", image: "/images/placeholders/garage_bike.jpg" },
   { id: "between-roads", number: "07", label: "Between Roads", image: "/images/placeholders/archive_trail.jpg" },
   { id: "drift", number: "08", label: "Drift", image: "/images/placeholders/drift-road.webp" },
 ];

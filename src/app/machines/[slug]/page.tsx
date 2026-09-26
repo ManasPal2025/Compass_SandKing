@@ -10,23 +10,14 @@ import type { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const machine = garageMachines.find((item) => item.slug === slug || item.legacySlugs?.includes(slug));
+  const machine = garageMachines.find((item) => item.slug === slug);
   return machine
     ? { title: `${machine.name} — Machines · Saraswat Mishra`, description: machine.story }
     : { title: "Machine not found — Saraswat Mishra" };
 }
 
 export async function generateStaticParams() {
-  const paramsList: Array<{ slug: string }> = [];
-  for (const machine of garageMachines) {
-    paramsList.push({ slug: machine.slug });
-    if (machine.legacySlugs) {
-      for (const legacy of machine.legacySlugs) {
-        paramsList.push({ slug: legacy });
-      }
-    }
-  }
-  return paramsList;
+  return garageMachines.map((machine) => ({ slug: machine.slug }));
 }
 
 export default async function MachineDetailPage({
@@ -35,7 +26,7 @@ export default async function MachineDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const machine = garageMachines.find((m) => m.slug === slug || m.legacySlugs?.includes(slug));
+  const machine = garageMachines.find((m) => m.slug === slug);
 
   if (!machine) {
     notFound();
@@ -48,10 +39,10 @@ export default async function MachineDetailPage({
           {/* Back link */}
           <div className="mb-12">
             <Link
-              href="/garage"
-              className="text-xs font-mono tracking-widest uppercase text-[#736e65] hover:text-[#f5f3ef] transition-colors"
+              href="/machines"
+              className="text-xs font-mono tracking-widest uppercase text-[#aba59c] hover:text-[#f5f3ef] transition-colors"
             >
-              ← Back to Garage
+              ← Back to Machines
             </Link>
           </div>
 
@@ -60,13 +51,12 @@ export default async function MachineDetailPage({
           <article className="space-y-12">
             {/* Header */}
             <div className="space-y-2 border-b border-[#201e1b] pb-8">
-              <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#8c867c]">
+              <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#aba59c]">
                 {machine.type}{machine.year ? ` · ${machine.year}` : ""} · {machine.role}
               </span>
               <h1 className="text-4xl sm:text-6xl font-serif text-[#f5f3ef] tracking-tight">
                 {machine.name}
               </h1>
-              {machine.model && <p className="text-xs font-mono uppercase tracking-wider text-[#69645c]">{machine.model}</p>}
             </div>
 
             {/* Hero Visual Frame */}
@@ -79,7 +69,7 @@ export default async function MachineDetailPage({
 
             {/* Narrative: Story First */}
             <div className="space-y-6 pt-4">
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#736e65] block">
+              <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#aba59c] block">
                 THE STORY & LORE
               </span>
               <p className="text-base sm:text-lg text-[#cbc5bb] font-light leading-relaxed">
@@ -89,12 +79,16 @@ export default async function MachineDetailPage({
 
             <div className="grid gap-6 border-l border-[#8f7155] py-2 pl-5 sm:grid-cols-2">
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#81766b]">Sample motto</span>
-                <p className="mt-2 font-serif text-xl italic text-[#e0d4c7]">“{machine.sampleMotto}”</p>
+                <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#aba59c]">
+                  {machine.contentStatus === "sample" ? "Sample motto" : "Motto"}
+                </span>
+                <p className="mt-2 font-serif text-xl italic text-[#e0d4c7]">“{machine.motto}”</p>
               </div>
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#81766b]">Sample role</span>
-                <p className="mt-2 text-sm leading-relaxed text-[#aaa398]">{machine.sampleUse}</p>
+                <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#aba59c]">
+                  {machine.contentStatus === "sample" ? "Sample role" : "Role"}
+                </span>
+                <p className="mt-2 text-sm leading-relaxed text-[#c6c0b6]">{machine.use}</p>
               </div>
             </div>
 

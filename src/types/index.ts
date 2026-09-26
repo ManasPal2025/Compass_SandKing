@@ -93,12 +93,11 @@ export type MachineCategory = 'Cars' | 'Motorcycles' | 'Capture' | 'Ride kit';
 export interface GarageMachine {
   id: string;
   slug: string;
-  legacySlugs?: string[];
-  internalReference?: string;
+  // Never render. For the owner's reference only.
+  privateReference?: string;
   name: string;
   type: MachineType;
   category: MachineCategory;
-  model?: string;
   year?: number | string;
   role: string; // e.g. "The Long-Distance Wanderer", "The Midnight Runabout"
   heroImage: {
@@ -107,9 +106,9 @@ export interface GarageMachine {
     caption?: string;
   };
   story: string; // The character lore & why Saraswat loves/rides it ("Story first")
-  sampleMotto: string;
-  sampleUse: string;
-  contentStatus?: 'sample' | 'verified';
+  motto: string;
+  use: string;
+  contentStatus: 'sample' | 'verified';
   keyNotes: string[]; // Character observations, e.g. "Never refuses an unknown trail"
   gallery?: Array<{
     src: string;
