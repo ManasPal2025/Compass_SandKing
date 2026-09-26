@@ -77,9 +77,9 @@ export function JourneyFilm({ children }: JourneyFilmProps) {
               <Image
                 src={sceneStop.image}
                 alt=""
+                aria-hidden="true"
                 fill
                 sizes="100vw"
-                quality={50}
                 loading="lazy"
                 className="journey-film-image"
               />

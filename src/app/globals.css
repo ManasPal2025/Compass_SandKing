@@ -236,8 +236,11 @@ body {
 /* Blossom belongs to the opening scene; it should not drift over the full story. */
 .atmosphere-layer[data-atmosphere="blossom"] {
   position: absolute;
-  inset: 0 0 auto;
-  height: 100svh;
+  inset: 0;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  pointer-events: none;
   z-index: 12;
 }
 

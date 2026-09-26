@@ -34,7 +34,6 @@ export default function HomePage() {
   return (
     <JourneyFilm>
     <div className="w-full flex flex-col selection:bg-[#2b2723] selection:text-[#f5f3ef]">
-      <AtmosphereLayer variant="blossom" />
       {/* =========================================================================
           01 — HERO (CINEMATIC SCENE — 100SVH)
           A full-viewport cinematic frame where the landscape owns the screen.
@@ -42,6 +41,7 @@ export default function HomePage() {
           Edge falloffs surround and dissolve the photograph without smothering it.
          ========================================================================= */}
       <section id="opening" className="relative w-full h-[100svh] min-h-[580px] sm:min-h-[700px] -mt-20 sm:-mt-24 md:-mt-28 overflow-hidden flex flex-col justify-end pb-10 sm:pb-16 md:pb-24">
+        <AtmosphereLayer variant="blossom" />
         {/* Layer 0: High-Resolution Photographic Scene — Visible, Sharp, Rich */}
         <div className="absolute inset-0 z-0">
           <Image
