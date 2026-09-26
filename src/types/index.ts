@@ -93,6 +93,8 @@ export type MachineCategory = 'Cars' | 'Motorcycles' | 'Capture' | 'Ride kit';
 export interface GarageMachine {
   id: string;
   slug: string;
+  legacySlugs?: string[];
+  internalReference?: string;
   name: string;
   type: MachineType;
   category: MachineCategory;

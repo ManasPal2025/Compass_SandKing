@@ -10,16 +10,23 @@ import type { Metadata } from "next";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const machine = garageMachines.find((item) => item.slug === slug);
+  const machine = garageMachines.find((item) => item.slug === slug || item.legacySlugs?.includes(slug));
   return machine
     ? { title: `${machine.name} — Machines · Saraswat Mishra`, description: machine.story }
     : { title: "Machine not found — Saraswat Mishra" };
 }
 
 export async function generateStaticParams() {
-  return garageMachines.map((machine) => ({
-    slug: machine.slug,
-  }));
+  const paramsList: Array<{ slug: string }> = [];
+  for (const machine of garageMachines) {
+    paramsList.push({ slug: machine.slug });
+    if (machine.legacySlugs) {
+      for (const legacy of machine.legacySlugs) {
+        paramsList.push({ slug: legacy });
+      }
+    }
+  }
+  return paramsList;
 }
 
 export default async function MachineDetailPage({
@@ -28,7 +35,7 @@ export default async function MachineDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const machine = garageMachines.find((m) => m.slug === slug);
+  const machine = garageMachines.find((m) => m.slug === slug || m.legacySlugs?.includes(slug));
 
   if (!machine) {
     notFound();
