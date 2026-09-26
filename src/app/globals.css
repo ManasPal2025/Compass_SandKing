@@ -80,6 +80,238 @@ body {
   animation: subtleAtmosphere 20s ease-in-out infinite alternate;
 }
 
+/* One fixed, non-interactive atmosphere layer shared by the five main pages. */
+.atmosphere-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+  isolation: isolate;
+}
+
+.atmosphere-particle {
+  position: absolute;
+  left: var(--particle-left);
+  top: var(--particle-top);
+  display: block;
+  will-change: transform, opacity;
+}
+
+/* 01 — HOMEPAGE: CHERRY BLOSSOM PETALS DRIFTING ACROSS HERO */
+.atmosphere-layer[data-atmosphere="blossom"] .atmosphere-particle {
+  width: 12px;
+  height: 16px;
+  border-radius: 75% 20% 70% 25%;
+  background: linear-gradient(135deg, #fff3f3 0%, #f6c8ce 45%, #e1959d 100%);
+  opacity: 0;
+  filter: drop-shadow(0 2px 6px rgba(225, 149, 157, 0.45));
+  animation: petal-drift calc(16s + var(--particle-index) * 0.36s) linear infinite;
+  animation-delay: calc(var(--particle-index) * -0.68s);
+}
+
+.atmosphere-layer[data-atmosphere="blossom"] .atmosphere-particle:nth-child(3n) {
+  width: 9px;
+  height: 13px;
+  border-radius: 25% 75% 30% 70%;
+  background: linear-gradient(135deg, #fdf8f5 0%, #ebd4d1 50%, #d8adaf 100%);
+  filter: drop-shadow(0 2px 5px rgba(216, 173, 175, 0.4));
+}
+
+.atmosphere-layer[data-atmosphere="blossom"] .atmosphere-particle:nth-child(4n) {
+  width: 14px;
+  height: 19px;
+  filter: drop-shadow(0 2px 7px rgba(225, 149, 157, 0.5));
+}
+
+/* 02 — JOURNAL: DISTANT STORM HORIZON & SHEET LIGHTNING */
+.atmosphere-layer[data-atmosphere="lightning"] {
+  background:
+    radial-gradient(ellipse at 68% 0%, rgba(125, 157, 194, 0.38) 0%, rgba(70, 98, 138, 0.20) 45%, transparent 78%),
+    linear-gradient(180deg, rgba(95, 125, 160, 0.16) 0%, transparent 38%);
+}
+
+.atmosphere-flash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 65% 8%, rgba(220, 240, 255, 0.60) 0%, rgba(150, 192, 240, 0.40) 36%, rgba(85, 125, 175, 0.20) 65%, transparent 88%),
+    linear-gradient(180deg, rgba(185, 215, 250, 0.25) 0%, rgba(110, 145, 190, 0.10) 45%, transparent 70%);
+  opacity: 0;
+  transition: opacity 360ms cubic-bezier(0.1, 0.9, 0.2, 1);
+  animation: storm-ambient-pulse 12s ease-in-out infinite;
+}
+
+.atmosphere-flash.is-active {
+  opacity: 1 !important;
+}
+
+/* 03 — ARCHIVE: FINE DEW PARTICLES & COOL MIST HAZE */
+.atmosphere-layer[data-atmosphere="dew"] {
+  background:
+    radial-gradient(ellipse at 18% 12%, rgba(160, 202, 194, 0.28) 0%, transparent 55%),
+    radial-gradient(ellipse at 82% 40%, rgba(145, 188, 182, 0.24) 0%, transparent 52%),
+    linear-gradient(180deg, rgba(150, 190, 185, 0.14) 0%, transparent 35%);
+}
+
+.atmosphere-mist {
+  position: absolute;
+  inset: -10%;
+  background:
+    radial-gradient(ellipse at 28% 22%, rgba(165, 205, 198, 0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 72% 58%, rgba(150, 195, 188, 0.14) 0%, transparent 55%);
+  animation: mist-breathe 18s ease-in-out infinite alternate;
+}
+
+.atmosphere-layer[data-atmosphere="dew"] .atmosphere-particle {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #d8eee7;
+  box-shadow: 0 0 10px 3px rgba(185, 228, 220, 0.6);
+  opacity: 0.85;
+  animation: dew-drift calc(16s + var(--particle-index) * 2s) ease-in-out infinite;
+  animation-delay: calc(var(--particle-index) * -2.6s);
+}
+
+.atmosphere-layer[data-atmosphere="dew"] .atmosphere-particle:nth-child(3n) {
+  width: 5.5px;
+  height: 7px;
+  border-radius: 65% 65% 65% 25%;
+  background: linear-gradient(145deg, rgba(240, 252, 248, 0.95), rgba(160, 210, 200, 0.75));
+  box-shadow: 0 0 12px 4px rgba(175, 222, 214, 0.55);
+  border: 1px solid rgba(220, 245, 240, 0.65);
+  opacity: 0.85;
+}
+
+/* 04 — GARAGE: GENTLE RAIN STREAKS & OCCASIONAL DROPLETS */
+.atmosphere-layer[data-atmosphere="rain"] {
+  background:
+    linear-gradient(180deg, rgba(120, 155, 185, 0.16) 0%, rgba(75, 105, 130, 0.09) 45%, transparent 75%),
+    radial-gradient(ellipse at 88% 12%, rgba(140, 175, 205, 0.12) 0%, transparent 50%);
+}
+
+.atmosphere-layer[data-atmosphere="rain"] .atmosphere-particle {
+  width: 2px;
+  height: 58px;
+  background: linear-gradient(180deg, transparent 0%, rgba(195, 222, 245, 0.4) 20%, rgba(230, 248, 255, 0.92) 75%, rgba(190, 220, 240, 0.55) 100%);
+  filter: drop-shadow(0 0 4px rgba(185, 218, 245, 0.55));
+  transform: rotate(14deg);
+  animation: rain-fall calc(1.8s + var(--particle-index) * 0.15s) linear infinite;
+  animation-delay: calc(var(--particle-index) * -0.45s);
+}
+
+.atmosphere-layer[data-atmosphere="rain"] .atmosphere-particle:nth-child(3n) {
+  width: 5px;
+  height: 7px;
+  border-radius: 50% 50% 50% 25%;
+  background: radial-gradient(circle at 35% 30%, #ffffff 25%, rgba(200, 228, 248, 0.92) 65%, rgba(135, 178, 210, 0.65) 100%);
+  box-shadow: 0 0 9px 2px rgba(190, 225, 250, 0.5);
+  border: 1px solid rgba(220, 240, 255, 0.6);
+  animation: droplet-slide calc(6s + var(--particle-index) * 0.4s) ease-in-out infinite;
+  animation-delay: calc(var(--particle-index) * -1.2s);
+}
+
+/* 05 — DRIFT: WARM DIAGONAL SHAFTS OF SUNLIGHT & DRIFTING DUST MOTES */
+.atmosphere-layer[data-atmosphere="sunray"] {
+  background: linear-gradient(180deg, rgba(235, 180, 115, 0.10) 0%, rgba(195, 140, 85, 0.05) 45%, transparent 80%);
+}
+
+.atmosphere-sunrays {
+  position: absolute;
+  inset: -15% -10%;
+  background:
+    linear-gradient(124deg, transparent 18%, rgba(235, 185, 115, 0.34) 28%, rgba(255, 218, 145, 0.46) 35%, rgba(235, 185, 115, 0.30) 42%, transparent 52%),
+    linear-gradient(128deg, transparent 40%, rgba(240, 190, 120, 0.30) 48%, rgba(255, 222, 155, 0.42) 54%, rgba(240, 190, 120, 0.26) 60%, transparent 70%),
+    radial-gradient(ellipse at 12% 8%, rgba(248, 198, 125, 0.32) 0%, transparent 60%);
+  opacity: 1;
+  mix-blend-mode: screen;
+  animation: ray-breathe 20s ease-in-out infinite alternate;
+}
+
+.atmosphere-layer[data-atmosphere="sunray"] .atmosphere-particle {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fde2b8;
+  box-shadow: 0 0 10px 3px rgba(245, 195, 115, 0.7);
+  opacity: 0.85;
+  animation: dust-drift calc(16s + var(--particle-index) * 2.2s) ease-in-out infinite;
+  animation-delay: calc(var(--particle-index) * -2.8s);
+}
+
+.atmosphere-layer[data-atmosphere="sunray"] .atmosphere-particle:nth-child(3n) {
+  width: 5.5px;
+  height: 5.5px;
+  background: #fff2d8;
+  box-shadow: 0 0 14px 4px rgba(250, 205, 130, 0.75);
+}
+
+/* ANIMATION KEYFRAMES */
+@keyframes petal-drift {
+  0% { transform: translate3d(-3vw, -8vh, 0) rotate(0deg) scale(0.9); opacity: 0; }
+  15% { opacity: 0.85; }
+  50% { transform: translate3d(4vw, 38vh, 0) rotate(160deg) scale(1.05); opacity: 0.80; }
+  85% { opacity: 0.75; }
+  100% { transform: translate3d(8vw, 84vh, 0) rotate(320deg) scale(0.95); opacity: 0; }
+}
+
+@keyframes storm-ambient-pulse {
+  0%, 78%, 100% { opacity: 0; }
+  81% { opacity: 0.24; }
+  83% { opacity: 0.08; }
+  85% { opacity: 0.32; }
+  91% { opacity: 0.04; }
+  94% { opacity: 0; }
+}
+
+@keyframes dew-drift {
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.55; }
+  40% { transform: translate3d(12px, -15px, 0); opacity: 0.9; }
+  75% { transform: translate3d(-8px, -26px, 0); opacity: 0.7; }
+}
+
+@keyframes mist-breathe {
+  from { transform: translate3d(-1%, 0, 0); opacity: 0.65; }
+  to { transform: translate3d(1%, 1%, 0); opacity: 0.95; }
+}
+
+@keyframes rain-fall {
+  0% { transform: translate3d(-3vw, -15vh, 0) rotate(14deg); opacity: 0; }
+  12% { opacity: 0.82; }
+  88% { opacity: 0.78; }
+  100% { transform: translate3d(6vw, 115vh, 0) rotate(14deg); opacity: 0; }
+}
+
+@keyframes droplet-slide {
+  0% { transform: translate3d(0, -6vh, 0); opacity: 0; }
+  15% { opacity: 0.85; }
+  85% { opacity: 0.80; }
+  100% { transform: translate3d(3vw, 110vh, 0); opacity: 0; }
+}
+
+@keyframes ray-breathe {
+  from { transform: translate3d(-1%, 0, 0); opacity: 0.75; }
+  to { transform: translate3d(1%, 1%, 0); opacity: 1; }
+}
+
+@keyframes dust-drift {
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.55; }
+  40% { transform: translate3d(14px, -18px, 0); opacity: 0.9; }
+  75% { transform: translate3d(-8px, -32px, 0); opacity: 0.75; }
+}
+
+/* RESPONSIVE & MOBILE REFINEMENT */
+@media (max-width: 600px) {
+  .atmosphere-layer .atmosphere-particle:nth-child(n + 19) { display: none; }
+  .atmosphere-layer[data-atmosphere="dew"] .atmosphere-particle:nth-child(n + 10) { display: none; }
+  .atmosphere-layer[data-atmosphere="rain"] .atmosphere-particle:nth-child(n + 15) { display: none; }
+  .atmosphere-layer[data-atmosphere="sunray"] .atmosphere-particle:nth-child(n + 7) { display: none; }
+  .atmosphere-layer[data-atmosphere="blossom"] .atmosphere-particle { width: 9px; height: 13px; }
+  .atmosphere-layer[data-atmosphere="rain"] .atmosphere-particle { height: 44px; }
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -90,7 +322,20 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .animate-slow-breathe,
-  .animate-atmosphere {
+  .animate-atmosphere,
+  .atmosphere-particle,
+  .atmosphere-sunrays,
+  .atmosphere-flash,
+  .atmosphere-mist {
     animation: none !important;
+  }
+
+  .atmosphere-particle { display: none !important; }
+  .atmosphere-flash { display: none !important; }
+
+  /* Retain static, subtle page tints */
+  .atmosphere-sunrays {
+    opacity: 0.45 !important;
+    transform: none !important;
   }
 }

@@ -10,10 +10,12 @@ import { journalEntries } from "@/data/journal";
 import { archiveItems } from "@/data/archive";
 import { garageMachines } from "@/data/garage";
 import { upcomingDrift, driftManifesto } from "@/data/drift";
+import { AtmosphereLayer } from "@/components/atmosphere/atmosphere-layer";
 
 export default function HomePage() {
   return (
     <div className="w-full flex flex-col selection:bg-[#2b2723] selection:text-[#f5f3ef]">
+      <AtmosphereLayer variant="blossom" />
       {/* =========================================================================
           01 — HERO (CINEMATIC SCENE — 100SVH)
           A full-viewport cinematic frame where the landscape owns the screen.
@@ -41,7 +43,7 @@ export default function HomePage() {
         <div className="absolute bottom-0 inset-x-0 h-32 sm:h-36 md:h-48 bg-gradient-to-t from-[#0c0b0a] via-[#0c0b0a]/60 to-transparent pointer-events-none z-10" />
 
         {/* Layer 2: Scene-Integrated Dominant Typography */}
-        <Container size="wide" className="relative z-20">
+        <Container size="wide" className="relative z-30">
           <FadeIn delay={0.1}>
             <div className="space-y-3 sm:space-y-4 max-w-5xl">
               <h1 className="text-[3.25rem] xs:text-6xl sm:text-8xl md:text-9xl lg:text-[11.5vw] font-serif font-normal tracking-tight text-[#FAF9F6] leading-[0.88] uppercase select-none drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)]">

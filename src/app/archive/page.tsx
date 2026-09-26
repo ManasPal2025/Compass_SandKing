@@ -4,6 +4,7 @@ import { Container, Section } from "@/components/layout/container";
 import { FadeIn } from "@/components/layout/fade-in";
 import { ArchiveStream } from "@/components/archive/archive-stream";
 import { archiveItems } from "@/data/archive";
+import { AtmosphereLayer } from "@/components/atmosphere/atmosphere-layer";
 
 export const metadata: Metadata = {
   title: "Archive — Saraswat Mishra",
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 export default function ArchivePage() {
   return (
     <Section spacing="default" className="min-h-screen">
+      <AtmosphereLayer variant="dew" />
       <Container size="wide">
         <FadeIn>
           {/* Quiet Editorial Header */}

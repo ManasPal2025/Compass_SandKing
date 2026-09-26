@@ -5,6 +5,7 @@ import { Container, Section } from "@/components/layout/container";
 import { FadeIn } from "@/components/layout/fade-in";
 import { EditorialImage } from "@/components/ui/editorial-image";
 import { journalEntries } from "@/data/journal";
+import { AtmosphereLayer } from "@/components/atmosphere/atmosphere-layer";
 
 export const metadata: Metadata = {
   title: "Journal — Saraswat Mishra",
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
 export default function JournalPage() {
   return (
     <Section spacing="default" className="min-h-screen">
+      <AtmosphereLayer variant="lightning" />
       <Container size="default">
         <FadeIn>
           {/* Quiet Editorial Header */}

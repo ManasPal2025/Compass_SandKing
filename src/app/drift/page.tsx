@@ -3,6 +3,7 @@ import { Container, Section } from "@/components/layout/container";
 import { FadeIn } from "@/components/layout/fade-in";
 import { DriftInterestForm } from "@/components/forms/drift-interest-form";
 import { driftManifesto, upcomingDrift } from "@/data/drift";
+import { AtmosphereLayer } from "@/components/atmosphere/atmosphere-layer";
 
 export const metadata = {
   title: "DRIFT — Saraswat Mishra",
@@ -13,6 +14,7 @@ export const metadata = {
 export default function DriftPage() {
   return (
     <Section spacing="default">
+      <AtmosphereLayer variant="sunray" />
       <Container size="narrow">
         <FadeIn>
           {/* Header & Manifesto */}

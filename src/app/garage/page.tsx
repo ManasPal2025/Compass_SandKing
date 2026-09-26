@@ -3,6 +3,7 @@ import { Container, Section } from "@/components/layout/container";
 import { FadeIn } from "@/components/layout/fade-in";
 import { EditorialImage } from "@/components/ui/editorial-image";
 import { garageMachines } from "@/data/garage";
+import { AtmosphereLayer } from "@/components/atmosphere/atmosphere-layer";
 
 export const metadata = {
   title: "GARAGE — Saraswat Mishra",
@@ -12,6 +13,7 @@ export const metadata = {
 export default function GaragePage() {
   return (
     <Section spacing="default">
+      <AtmosphereLayer variant="rain" />
       <Container>
         <FadeIn>
           {/* Header */}
