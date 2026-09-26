@@ -15,7 +15,7 @@ import {
   type RiderArchetype,
   type TraitPoints,
 } from "../../data/games/chai-stop.ts";
-import { pickN } from "./random.ts";
+import { pickN, createRng } from "./random.ts";
 
 export const START_TIME_MINUTES = 360; // 6:00 AM
 export const SUNSET_TIME_MINUTES = 1110; // 6:30 PM
@@ -230,23 +230,28 @@ export function determineArchetype(state: ChaiState): RiderArchetype {
   }
 
   const { grit, chill, wanderlust, chaos } = state.traits;
-  const traits = [grit, chill, wanderlust, chaos];
+  const weightedGrit = grit * 0.5;
+  const weightedChill = chill;
+  const weightedWanderlust = wanderlust;
+  const weightedChaos = chaos;
+
+  const traits = [weightedGrit, weightedChill, weightedWanderlust, weightedChaos];
   const maxVal = Math.max(...traits);
   const minVal = Math.min(...traits);
 
-  // 2. Otherwise, if difference between highest and lowest trait <= 1 -> The Balanced Rider
-  if (maxVal - minVal <= 1) {
+  // 2. Otherwise, if difference between highest and lowest weighted trait <= 1.5 -> The Balanced Rider
+  if (maxVal - minVal <= 1.5) {
     return RIDER_ARCHETYPES["balanced-rider"];
   }
 
   // 3. Otherwise highest trait decides (ties broken in order: Chill, Wanderlust, Grit, Chaos)
-  if (chill === maxVal) {
+  if (weightedChill === maxVal) {
     return RIDER_ARCHETYPES["unplanned-pauser"];
   }
-  if (wanderlust === maxVal) {
+  if (weightedWanderlust === maxVal) {
     return RIDER_ARCHETYPES["sunset-chaser"];
   }
-  if (grit === maxVal) {
+  if (weightedGrit === maxVal) {
     return RIDER_ARCHETYPES["iron-butt"];
   }
   return RIDER_ARCHETYPES["shortcut-believer"];
@@ -307,6 +312,75 @@ export function evaluateEnding(state: ChaiState): ChaiEndingResult {
       stops: state.stops,
     },
   };
+}
+
+/**
+ * Creates the bonus "night ride" scene shown after decision 14 if within 72 km of the lake.
+ */
+export function createBonusNightScene(remainingKm: number): ChaiScene {
+  const rideMinutes = Math.ceil((remainingKm / 36) * 50);
+  return {
+    id: "bonus-last-light",
+    timeOfDay: "evening",
+    kicker: "BONUS · LAST LIGHT",
+    prompt: "{time}. The light is almost gone. The lake is {km} km away.",
+    icon: "Moon",
+    isBonus: true,
+    options: [
+      {
+        label: "Ride on into the dark",
+        kind: "ride",
+        distanceDelta: remainingKm,
+        timeDelta: rideMinutes,
+        traits: { grit: 1 },
+        outcomeLine: "Headlight on, lake ahead. You're not stopping now.",
+      },
+      {
+        label: "Call it a night at the dhaba",
+        kind: "stop",
+        distanceDelta: 0,
+        timeDelta: 35,
+        traits: { chill: 1 },
+        chai: 1,
+        outcomeLine: "A cot, a blanket, a last chai. The lake can wait till morning.",
+      },
+    ],
+  };
+}
+
+/**
+ * Simulates a full run where every choice (including bonus scene) is picked uniformly at random with seeded RNG.
+ */
+export function simulateFullRun(seed: number): ChaiEndingResult {
+  const rng = createRng(seed);
+  const scenes = generateChaiRun(rng);
+  let state = createInitialChaiState();
+
+  for (let i = 0; i < scenes.length; i++) {
+    if (state.distance >= GOAL_DISTANCE_KM) {
+      break;
+    }
+    const scene = scenes[i];
+    const choiceIdx = Math.floor(rng() * scene.options.length);
+    const option = scene.options[choiceIdx];
+    const res = applyOptionChoice(state, option, rng);
+    state = res.nextState;
+  }
+
+  // After the 14th decision, if rider has NOT reached 280 km and is within 72 km, show bonus scene
+  if (state.distance < GOAL_DISTANCE_KM) {
+    const remainingKm = GOAL_DISTANCE_KM - state.distance;
+    if (remainingKm <= 72 && remainingKm > 0) {
+      state.timeMinutes = Math.max(state.timeMinutes, SUNSET_TIME_MINUTES);
+      const bonusScene = createBonusNightScene(remainingKm);
+      const choiceIdx = Math.floor(rng() * bonusScene.options.length);
+      const option = bonusScene.options[choiceIdx];
+      const res = applyOptionChoice(state, option, rng);
+      state = res.nextState;
+    }
+  }
+
+  return evaluateEnding(state);
 }
 
 /**

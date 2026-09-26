@@ -21,10 +21,12 @@ import {
 import {
   generateChaiRun,
   createInitialChaiState,
+  createBonusNightScene,
   applyOptionChoice,
   evaluateEnding,
   formatClock,
   GOAL_DISTANCE_KM,
+  SUNSET_TIME_MINUTES,
   type ChaiState,
   type ChoiceResult,
   type ChaiEndingResult,
@@ -120,12 +122,12 @@ export function ChaiStopGame() {
   };
 
   const handleAdvance = () => {
-    // Check for early arrival (distance >= 280) or end of run
     const hasArrived = state.distance >= GOAL_DISTANCE_KM;
-    const isLastScene = currentIndex >= scenes.length - 1;
+    const remainingKm = Math.max(0, GOAL_DISTANCE_KM - state.distance);
+    const isAtLastRegularScene = currentIndex === 13;
+    const isPastRegularScenes = currentIndex >= 14;
 
-    if (hasArrived || isLastScene) {
-      // Conclude run
+    const concludeRun = () => {
       const ending = evaluateEnding(state);
       setFinalEnding(ending);
       setScreen("result");
@@ -141,15 +143,53 @@ export function ChaiStopGame() {
       writeJSON(STORAGE_KEYS.CHAI, nextHistory);
 
       setAnnouncement(`Arrived! Result: ${ending.title}. You are ${ending.archetype.name}.`);
-    } else {
-      setCurrentIndex((prev) => prev + 1);
-      setLastChoice(null);
-      setScreen("playing");
-      const nextScene = scenes[currentIndex + 1];
-      const timeStr = formatClock(state.timeMinutes);
-      const formattedPrompt = nextScene.prompt.replace("{time}", timeStr);
-      setAnnouncement(`Scene ${currentIndex + 2}: ${formattedPrompt}`);
+    };
+
+    if (hasArrived) {
+      concludeRun();
+      return;
     }
+
+    // After the 14th decision, if within 72 km of the lake, trigger bonus scene
+    if (isAtLastRegularScene) {
+      if (remainingKm <= 72 && remainingKm > 0) {
+        const bonusTime = Math.max(state.timeMinutes, SUNSET_TIME_MINUTES);
+        setState((prev) => ({
+          ...prev,
+          timeMinutes: bonusTime,
+        }));
+        const bonusScene = createBonusNightScene(remainingKm);
+        setScenes((prev) => [...prev, bonusScene]);
+        setCurrentIndex(14);
+        setLastChoice(null);
+        setScreen("playing");
+        const timeStr = formatClock(bonusTime);
+        const promptText = bonusScene.prompt
+          .replace("{time}", timeStr)
+          .replace("{km}", String(remainingKm));
+        setAnnouncement(`Bonus Scene: ${promptText}`);
+        return;
+      } else {
+        concludeRun();
+        return;
+      }
+    }
+
+    if (isPastRegularScenes || currentIndex >= scenes.length - 1) {
+      concludeRun();
+      return;
+    }
+
+    setCurrentIndex((prev) => prev + 1);
+    setLastChoice(null);
+    setScreen("playing");
+    const nextScene = scenes[currentIndex + 1];
+    const timeStr = formatClock(state.timeMinutes);
+    const nextRemaining = Math.max(0, GOAL_DISTANCE_KM - state.distance);
+    const promptText = nextScene.prompt
+      .replace("{time}", timeStr)
+      .replace("{km}", String(nextRemaining));
+    setAnnouncement(`Scene ${currentIndex + 2}: ${promptText}`);
   };
 
   const handleShare = async () => {
@@ -195,7 +235,10 @@ export function ChaiStopGame() {
 
   const currentScene: ChaiScene | undefined = scenes[currentIndex];
   const clockString = formatClock(state.timeMinutes);
-  const formattedPrompt = currentScene?.prompt.replace("{time}", clockString);
+  const remainingKm = Math.max(0, GOAL_DISTANCE_KM - state.distance);
+  const formattedPrompt = currentScene?.prompt
+    .replace("{time}", clockString)
+    .replace("{km}", String(remainingKm));
 
   // Time of day background subtle tint
   const currentTimeOfDay = currentScene?.timeOfDay || "morning";
@@ -318,6 +361,9 @@ export function ChaiStopGame() {
                 </div>
 
                 <div className="flex items-center gap-4 text-xs font-mono">
+                  <span className="text-[#c4a482] font-semibold">
+                    {currentScene.isBonus ? "Bonus" : `${currentIndex + 1} of 14`}
+                  </span>
                   <div className="flex items-center gap-1.5 text-[#f5f3ef]">
                     <Coffee className="w-4 h-4 text-[#c4a482]" />
                     <span>{state.chai} chai</span>
@@ -355,11 +401,18 @@ export function ChaiStopGame() {
             <div className="p-6 sm:p-8 bg-[#141312] border border-[#262421] rounded-sm space-y-6">
               <div className="flex items-center justify-between text-xs font-mono border-b border-[#201e1b] pb-4">
                 <span className="text-[#c4a482] uppercase tracking-[0.2em]">
-                  {currentScene.isWildcard
-                    ? `WILDCARD · DECISION ${currentIndex + 1} OF ${scenes.length}`
-                    : `${currentScene.timeOfDay.toUpperCase()} · DECISION ${currentIndex + 1} OF ${scenes.length}`}
+                  {currentScene.isBonus
+                    ? "BONUS · LAST LIGHT"
+                    : currentScene.isWildcard
+                    ? `WILDCARD · DECISION ${currentIndex + 1} OF 14`
+                    : `${currentScene.timeOfDay.toUpperCase()} · DECISION ${currentIndex + 1} OF 14`}
                 </span>
-                <ChaiIcon name={currentScene.icon} className="w-5 h-5 text-[#c4a482]" />
+                <div className="flex items-center gap-3">
+                  <span className="text-[#aba59c]">
+                    {currentScene.isBonus ? "Bonus" : `${currentIndex + 1} of 14`}
+                  </span>
+                  <ChaiIcon name={currentScene.icon} className="w-5 h-5 text-[#c4a482]" />
+                </div>
               </div>
 
               <div className="space-y-2">

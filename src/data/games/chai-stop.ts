@@ -41,6 +41,8 @@ export interface ChaiScene {
   icon: string;
   options: readonly ChaiOption[];
   isWildcard?: boolean;
+  isBonus?: boolean;
+  kicker?: string;
 }
 
 export interface ChaiEnding {

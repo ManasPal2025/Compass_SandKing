@@ -15,6 +15,8 @@ import {
   evaluateEnding,
   simulateRideStopSequence,
   determineArchetype,
+  simulateFullRun,
+  createBonusNightScene,
   GOAL_DISTANCE_KM,
   EARLY_ARRIVAL_MINUTES,
   formatClock,
@@ -135,19 +137,19 @@ test("Each of the 6 archetypes is reachable via deterministic state", () => {
   };
   assert.equal(determineArchetype(chaiConnoisseurState).id, "chai-connoisseur");
 
-  // 2. The Balanced Rider (chai < 5, diff between max and min trait <= 1)
+  // 2. The Balanced Rider (chai < 5, diff between highest and lowest weighted trait <= 1.5)
   const balancedState = {
     ...createInitialChaiState(),
     chai: 2,
-    traits: { grit: 2, chill: 2, wanderlust: 3, chaos: 2 },
+    traits: { grit: 4, chill: 2, wanderlust: 3, chaos: 2 },
   };
   assert.equal(determineArchetype(balancedState).id, "balanced-rider");
 
-  // 3. The Iron Butt (highest is Grit)
+  // 3. The Iron Butt (highest weighted trait is Grit)
   const ironButtState = {
     ...createInitialChaiState(),
     chai: 1,
-    traits: { grit: 6, chill: 1, wanderlust: 2, chaos: 0 },
+    traits: { grit: 10, chill: 1, wanderlust: 2, chaos: 0 },
   };
   assert.equal(determineArchetype(ironButtState).id, "iron-butt");
 
@@ -260,3 +262,71 @@ test("Brand and alcohol check: no scene or wildcard contains forbidden terms", (
     }
   }
 });
+
+test("Monte Carlo test: 3,000 runs with seeds 1..3000", () => {
+  const archetypeCounts: Record<string, number> = {
+    "chai-connoisseur": 0,
+    "balanced-rider": 0,
+    "iron-butt": 0,
+    "unplanned-pauser": 0,
+    "sunset-chaser": 0,
+    "shortcut-believer": 0,
+  };
+  let starlightCount = 0;
+  const totalRuns = 3000;
+
+  for (let seed = 1; seed <= totalRuns; seed++) {
+    const ending = simulateFullRun(seed);
+    archetypeCounts[ending.archetype.id] = (archetypeCounts[ending.archetype.id] || 0) + 1;
+    if (ending.id === "arrived-by-starlight") {
+      starlightCount++;
+    }
+  }
+
+  // Assert that each of the six archetypes appears in at least 3% of runs and none in more than 40%
+  for (const [id, count] of Object.entries(archetypeCounts)) {
+    const pct = count / totalRuns;
+    assert.ok(
+      pct >= 0.03,
+      `Archetype '${id}' appeared in ${(pct * 100).toFixed(2)}% of runs (${count}/${totalRuns}), expected >= 3%`
+    );
+    assert.ok(
+      pct <= 0.40,
+      `Archetype '${id}' appeared in ${(pct * 100).toFixed(2)}% of runs (${count}/${totalRuns}), expected <= 40%`
+    );
+  }
+
+  // Assert that 'Arrived by Starlight' appears in at least 3% of runs
+  const starlightPct = starlightCount / totalRuns;
+  assert.ok(
+    starlightPct >= 0.03,
+    `'Arrived by Starlight' appeared in ${(starlightPct * 100).toFixed(2)}% of runs (${starlightCount}/${totalRuns}), expected >= 3%`
+  );
+});
+
+test("Bonus night ride scene structure, copy, and calculations", () => {
+  const remainingKm = 40;
+  const bonus = createBonusNightScene(remainingKm);
+
+  assert.equal(bonus.kicker, "BONUS · LAST LIGHT");
+  assert.equal(bonus.prompt, "{time}. The light is almost gone. The lake is {km} km away.");
+  assert.equal(bonus.isBonus, true);
+  assert.equal(bonus.options.length, 2);
+
+  const optA = bonus.options[0];
+  assert.equal(optA.label, "Ride on into the dark");
+  assert.equal(optA.kind, "ride");
+  assert.equal(optA.traits?.grit, 1);
+  assert.equal(optA.distanceDelta, 40);
+  assert.equal(optA.timeDelta, Math.ceil((40 / 36) * 50));
+  assert.equal(optA.outcomeLine, "Headlight on, lake ahead. You're not stopping now.");
+
+  const optB = bonus.options[1];
+  assert.equal(optB.label, "Call it a night at the dhaba");
+  assert.equal(optB.kind, "stop");
+  assert.equal(optB.traits?.chill, 1);
+  assert.equal(optB.chai, 1);
+  assert.equal(optB.outcomeLine, "A cot, a blanket, a last chai. The lake can wait till morning.");
+});
+
+
