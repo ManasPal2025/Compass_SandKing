@@ -14,9 +14,65 @@ export function Header() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const lastScrollY = useRef(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMenuOpenRef = useRef(isMenuOpen);
+  isMenuOpenRef.current = isMenuOpen;
+
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileNavRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
+
+  // Close menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  // Handle focus when menu opens
+  useEffect(() => {
+    if (isMenuOpen) {
+      // Focus first link on open
+      requestAnimationFrame(() => {
+        firstMobileLinkRef.current?.focus();
+      });
+    }
+  }, [isMenuOpen]);
+
+  // Close on Escape or click/tap outside
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setIsMenuOpen(false);
+        toggleButtonRef.current?.focus();
+      }
+    };
+
+    const handlePointerDown = (e: PointerEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setIsMenuOpen(false);
+        toggleButtonRef.current?.focus();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("pointerdown", handlePointerDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("pointerdown", handlePointerDown);
+    };
+  }, [isMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
+      // Do NOT hide the header while mobile menu is open
+      if (isMenuOpenRef.current) {
+        setIsVisible(true);
+        return;
+      }
+
       const currentScrollY = window.scrollY;
 
       // Track if user has scrolled beyond top threshold
@@ -42,6 +98,7 @@ export function Header() {
 
   return (
     <header
+      ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out pt-[max(0.75rem,env(safe-area-inset-top))] ${
         isVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
       } ${
@@ -69,6 +126,7 @@ export function Header() {
         </Link>
 
         <button
+          ref={toggleButtonRef}
           type="button"
           className="inline-flex min-h-11 min-w-11 items-center justify-center text-[#f5f3ef] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[#c4a482] lg:hidden"
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -114,6 +172,7 @@ export function Header() {
         </nav>
 
         <nav
+          ref={mobileNavRef}
           id="mobile-main-navigation"
           aria-label="Mobile main navigation"
           hidden={!isMenuOpen}
@@ -125,6 +184,7 @@ export function Header() {
               return (
                 <Link
                   key={item.href}
+                  ref={index === 0 ? firstMobileLinkRef : undefined}
                   href={item.href}
                   aria-current={isActive ? "page" : undefined}
                   onClick={() => setIsMenuOpen(false)}
