@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { Pause, Play, RotateCcw, VolumeX } from "lucide-react";
 
 const FILM_LENGTH = 30;
@@ -18,19 +18,31 @@ function formatTime(value: number) {
   return `0:${String(seconds).padStart(2, "0")}`;
 }
 
+function subscribeReducedMotion(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+  const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mql.addEventListener("change", callback);
+  return () => mql.removeEventListener("change", callback);
+}
+
+function getReducedMotionSnapshot() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function getReducedMotionServerSnapshot() {
+  return false;
+}
+
 export function CinematicFilmPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [elapsed, setElapsed] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot
+  );
   const [manualSceneIndex, setManualSceneIndex] = useState(0);
-
-  useEffect(() => {
-    const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mql.matches);
-    const onChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    mql.addEventListener("change", onChange);
-    return () => mql.removeEventListener("change", onChange);
-  }, []);
 
   const sceneIndex = prefersReducedMotion
     ? manualSceneIndex
@@ -161,7 +173,7 @@ export function CinematicFilmPlayer() {
               Scene list (text alternative)
             </summary>
             <ol className="mt-3 list-decimal space-y-2 pl-4 text-xs text-[#aba59c]">
-              {FILM_SCENES.map((s, idx) => (
+              {FILM_SCENES.map((s) => (
                 <li key={s.title}>
                   <strong className="text-[#f5f3ef]">{s.title}:</strong> {s.alt}
                 </li>

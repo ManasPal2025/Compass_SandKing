@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ArchiveItem } from "@/types";
 import { travelDestinations } from "@/data/travel-destinations";
@@ -20,7 +20,9 @@ export function AtlasView({ items }: { items: ArchiveItem[] }) {
     placeParam ? initialPlace.country : null
   );
 
-  useEffect(() => {
+  const [prevPlaceParam, setPrevPlaceParam] = useState(placeParam);
+  if (placeParam !== prevPlaceParam) {
+    setPrevPlaceParam(placeParam);
     if (placeParam) {
       const match = travelDestinations.find((d) => d.id === placeParam);
       if (match) {
@@ -28,7 +30,7 @@ export function AtlasView({ items }: { items: ArchiveItem[] }) {
         setCountryFilter(match.country);
       }
     }
-  }, [placeParam]);
+  }
 
   const handleSelectPlace = (id: string) => {
     setSelectedPlaceId(id);

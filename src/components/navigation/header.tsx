@@ -14,18 +14,16 @@ export function Header() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const lastScrollY = useRef(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isMenuOpenRef = useRef(isMenuOpen);
-  isMenuOpenRef.current = isMenuOpen;
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setIsMenuOpen(false);
+  }
 
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
   const mobileNavRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLElement>(null);
   const firstMobileLinkRef = useRef<HTMLAnchorElement>(null);
-
-  // Close menu on route change
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [pathname]);
 
   // Handle focus when menu opens
   useEffect(() => {
@@ -68,7 +66,7 @@ export function Header() {
   useEffect(() => {
     const handleScroll = () => {
       // Do NOT hide the header while mobile menu is open
-      if (isMenuOpenRef.current) {
+      if (isMenuOpen) {
         setIsVisible(true);
         return;
       }
@@ -94,7 +92,7 @@ export function Header() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isMenuOpen]);
 
   return (
     <header
