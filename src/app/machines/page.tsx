@@ -31,7 +31,7 @@ export default function GaragePage() {
             <p className="mt-3 text-sm leading-relaxed text-[#c6c0b6]">Filter the sample profiles by what moves, what captures, and what helps prepare for the ride.</p>
             <p className="mt-2 text-xs font-mono uppercase tracking-[0.14em] text-[#aba59c]">Vehicles and equipment in this collection are presented under mythical editorial names.</p>
           </header>
-          <MachineCollection items={garageMachines} />
+          <MachineCollection items={garageMachines.map(({ privateReference: _ref, ...machine }) => machine)} />
         </Container>
       </Section>
     </>
