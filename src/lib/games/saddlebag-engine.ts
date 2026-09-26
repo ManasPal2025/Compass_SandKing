@@ -137,7 +137,6 @@ export function calculateTripScore(
     .map((id) => SADDLEBAG_ITEMS.find((it) => it.id === id))
     .filter((it): it is SaddlebagItem => Boolean(it));
 
-  const packedSet = new Set(packedItemIds);
   const eventResults: EventEvaluation[] = events.map((ev) =>
     evaluateEvent(ev, packedItemIds)
   );
@@ -293,13 +292,13 @@ export function evaluateBadges(
   const trips = Object.values(completedTrips);
 
   // "Fairway Nomad" — packed the golf bag on 3 or more different trips
-  const golfTrips = trips.filter((t) => t.packedItemIds.includes("golf-bag")).length;
+  const golfTrips = trips.filter((t) => t.packedItemIds?.includes("golf-bag")).length;
   if (golfTrips >= 3) {
     badges.push(SADDLEBAG_BADGES["fairway-nomad"]);
   }
 
   // "Carb-Loaded Legend" — packed the pizza on 3 or more different trips
-  const pizzaTrips = trips.filter((t) => t.packedItemIds.includes("pizza")).length;
+  const pizzaTrips = trips.filter((t) => t.packedItemIds?.includes("pizza")).length;
   if (pizzaTrips >= 3) {
     badges.push(SADDLEBAG_BADGES["carb-loaded-legend"]);
   }

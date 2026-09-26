@@ -14,6 +14,7 @@ import { AtmosphereLayer } from "@/components/atmosphere/atmosphere-layer";
 import { JourneyFilm } from "@/components/journey/journey-film";
 import { CinematicFilmPlayer } from "@/components/journey/cinematic-film-player";
 import { SampleContentNotice } from "@/components/ui/sample-content-notice";
+import { RoadsideGamesStrip } from "@/components/games/roadside-games-strip";
 
 const journalPreviewImages = [
   {
@@ -335,15 +336,17 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="mt-10 flex flex-col gap-4 border-t border-[#201e1b] pt-6 sm:flex-row sm:items-center sm:justify-between">
-              <p className="text-sm text-[#a8a195]">Follow a place through its photographs—or try to recognize it from one frame.</p>
-              <Link href="/atlas#photo-guessing-game" className="inline-flex min-h-11 items-center gap-2 text-xs font-mono uppercase tracking-[0.18em] text-[#c4a482] hover:text-[#f5f3ef]">
-                Play Where in the World? <span aria-hidden="true">→</span>
-              </Link>
+            <div className="mt-10 border-t border-[#201e1b] pt-6">
+              <p className="text-sm text-[#aba59c]">Follow a place through its photographs—or discover it one frame at a time.</p>
             </div>
           </FadeIn>
         </Container>
       </Section>
+
+      {/* =========================================================================
+          ROADSIDE GAMES STRIP
+         ========================================================================= */}
+      <RoadsideGamesStrip />
 
       {/* =========================================================================
           06 — MACHINES TEASER

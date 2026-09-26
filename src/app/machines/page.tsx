@@ -4,6 +4,7 @@ import { Section, Container } from "@/components/layout/container";
 import { AtmosphereLayer } from "@/components/atmosphere/atmosphere-layer";
 import { MachineCollection } from "@/components/garage/machine-collection";
 import { garageMachines } from "@/data/garage";
+import { SaddlebagGame } from "@/components/games/saddlebag/saddlebag-game";
 
 export const metadata: Metadata = {
   title: "Machines — Saraswat Mishra",
@@ -31,9 +32,14 @@ export default function GaragePage() {
             <p className="mt-3 text-sm leading-relaxed text-[#c6c0b6]">Filter the sample profiles by what moves, what captures, and what helps prepare for the ride.</p>
             <p className="mt-2 text-xs font-mono uppercase tracking-[0.14em] text-[#aba59c]">Vehicles and equipment in this collection are presented under mythical editorial names.</p>
           </header>
-          <MachineCollection items={garageMachines.map(({ privateReference: _ref, ...machine }) => machine)} />
+          <MachineCollection items={garageMachines.map((machine) => {
+            const { privateReference, ...rest } = machine;
+            void privateReference;
+            return rest;
+          })} />
         </Container>
       </Section>
+      <SaddlebagGame />
     </>
   );
 }

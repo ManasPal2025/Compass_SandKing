@@ -5,6 +5,7 @@ import { DriftInterestForm } from "@/components/forms/drift-interest-form";
 import { driftManifesto, upcomingDrift } from "@/data/drift";
 import { AtmosphereLayer } from "@/components/atmosphere/atmosphere-layer";
 import { ImmersivePageHero } from "@/components/layout/immersive-page-hero";
+import { ChaiStopGame } from "@/components/games/chai-stop/chai-stop-game";
 
 export const metadata = {
   title: "DRIFT — Saraswat Mishra",
@@ -23,7 +24,7 @@ export default function DriftPage() {
         imageSrc="/images/placeholders/drift-road.webp"
         imageAlt="A sunlit road winding through dry open hills"
         actionLabel="Leave a note"
-        actionHref="#drift-interest"
+        actionHref="#drift-interest-form"
       />
       <Section id="drift-invitation" spacing="default">
         <Container size="narrow">
@@ -52,8 +53,7 @@ export default function DriftPage() {
 
           {/* Upcoming Drift Card */}
           {upcomingDrift ? (
-            <div className="space-y-12 mb-20">
-              <div className="border border-[#262421] bg-[#121110] p-6 sm:p-10 space-y-6">
+            <div className="border border-[#262421] bg-[#121110] p-6 sm:p-10 space-y-6">
                 <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#201e1b] pb-4 text-xs font-mono text-[#aba59c]">
                   <span className="uppercase tracking-widest text-[#b08968]">
                     NEXT SCHEDULED ESCAPE
@@ -108,13 +108,8 @@ export default function DriftPage() {
                   </div>
                 </div>
               </div>
-
-              {/* Expression of Interest */}
-              <DriftInterestForm />
-            </div>
-          ) : (
-            <div className="space-y-8 mb-20">
-              <div className="mb-12 border-y border-[#1f1d1a] py-7 sm:py-9">
+            ) : (
+              <div className="border-y border-[#1f1d1a] py-7 sm:py-9">
                 <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#b08968]">
                   WHEN A ROUTE IS SET
                 </span>
@@ -125,10 +120,20 @@ export default function DriftPage() {
                   Until then, you can leave a note about the kind of road you would like to share.
                 </p>
               </div>
-              <DriftInterestForm />
-            </div>
-          )}
-        </FadeIn>
+            )}
+          </FadeIn>
+        </Container>
+      </Section>
+
+      {/* Chai Stop or Keep Riding game */}
+      <ChaiStopGame />
+
+      {/* Expression of Interest */}
+      <Section id="drift-interest-section" spacing="default">
+        <Container size="narrow">
+          <FadeIn>
+            <DriftInterestForm />
+          </FadeIn>
         </Container>
       </Section>
     </>

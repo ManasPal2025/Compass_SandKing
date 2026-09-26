@@ -50,11 +50,12 @@ export function DriftInterestForm() {
   }
 
   return (
-    <form
-      id="drift-interest"
-      onSubmit={handleSubmit}
-      className="border border-[#22201e] bg-[#121110] p-6 sm:p-10 space-y-6"
-    >
+    <div id="drift-interest-form" className="scroll-mt-24">
+      <form
+        id="drift-interest"
+        onSubmit={handleSubmit}
+        className="border border-[#22201e] bg-[#121110] p-6 sm:p-10 space-y-6"
+      >
       <div className="border-b border-[#201e1b] pb-4">
         <span className="text-xs font-mono tracking-[0.2em] uppercase text-[#aba59c] block">
           EXPRESSION OF INTEREST
@@ -170,5 +171,6 @@ export function DriftInterestForm() {
         Prepare email
       </button>
     </form>
+    </div>
   );
 }

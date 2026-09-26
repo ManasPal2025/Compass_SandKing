@@ -153,8 +153,8 @@ export function applyOptionChoice(
   let stopsDelta = 0;
   let detoursDelta = 0;
   let wrongTurnsDelta = 0;
-  let chaiDelta = option.chai || 0;
-  let viewsDelta = option.views || 0;
+  const chaiDelta = option.chai || 0;
+  const viewsDelta = option.views || 0;
   let outcomeLine = option.outcomeLine || "";
 
   if (option.kind === "ride") {

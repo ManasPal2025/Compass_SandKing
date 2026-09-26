@@ -275,3 +275,31 @@ test("Determinism: same seed and packing produces identical draw and results", (
     draw2.map((e) => e.id)
   );
 });
+
+test("evaluateEvent, getPackerTitle, and evaluateBadges work accurately", () => {
+  const rainEv = SADDLEBAG_EVENTS["rain"];
+  const handled = evaluateEvent(rainEv, ["rain-jacket"]);
+  assert.equal(handled.handled, true);
+  assert.equal(handled.solverItemId, "rain-jacket");
+
+  const missed = evaluateEvent(rainEv, ["water"]);
+  assert.equal(missed.handled, false);
+
+  assert.equal(getPackerTitle(15).title, "The Unshakeable Packer");
+  assert.equal(getPackerTitle(12).title, "Road-Ready Regular");
+  assert.equal(getPackerTitle(8).title, "The Hopeful Improviser");
+  assert.equal(getPackerTitle(3).title, "The Legend of the Passing Truck");
+
+  const badges = evaluateBadges(
+    {
+      "trip-1": { tripId: "trip-1", bestStars: 3, bestPoints: 40, packedItemIds: ["golf-bag", "pizza"], thirdJacketSavedCold: true },
+      "trip-2": { tripId: "trip-2", bestStars: 3, bestPoints: 40, packedItemIds: ["golf-bag", "pizza"], thirdJacketSavedCold: false },
+      "trip-3": { tripId: "trip-3", bestStars: 3, bestPoints: 40, packedItemIds: ["golf-bag", "pizza"], thirdJacketSavedCold: false },
+      "trip-4": { tripId: "trip-4", bestStars: 3, bestPoints: 40, packedItemIds: [], thirdJacketSavedCold: false },
+      "trip-5": { tripId: "trip-5", bestStars: 3, bestPoints: 40, packedItemIds: [], thirdJacketSavedCold: false },
+    },
+    15
+  );
+  assert.equal(badges.length, 4);
+});
+

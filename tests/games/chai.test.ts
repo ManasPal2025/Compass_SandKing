@@ -126,6 +126,7 @@ test("Stop-leaning path never reaches 280 km across many seeds", () => {
 });
 
 test("Each of the 6 archetypes is reachable via deterministic state", () => {
+  assert.equal(Object.keys(RIDER_ARCHETYPES).length, 6);
   // 1. The Chai Connoisseur (chai >= 5)
   const chaiConnoisseurState = {
     ...createInitialChaiState(),
