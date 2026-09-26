@@ -23,7 +23,7 @@ export default function JournalPage() {
     <>
       <AtmosphereLayer variant="lightning" />
       <ImmersivePageHero
-        kicker="04 / NOTEBOOK & DISPATCHES"
+        kicker="NOTEBOOK & DISPATCHES"
         title="Journal"
         description="Roadside observations, mechanical pauses, and small thoughts from the moments when the engine is off."
         imageSrc="/images/placeholders/journal-pass.webp"

@@ -17,7 +17,7 @@ export default function DriftPage() {
     <>
       <AtmosphereLayer variant="sunray" />
       <ImmersivePageHero
-        kicker="08 / AN OPEN INVITATION"
+        kicker="AN OPEN INVITATION"
         title="Drift"
         description="A slower invitation to share a stretch of road when route, timing, and company come together."
         imageSrc="/images/placeholders/drift-road.webp"
