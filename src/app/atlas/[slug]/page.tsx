@@ -59,7 +59,7 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
           <div className="mb-8 sm:mb-12 md:mb-16">
             <Link
               href="/atlas"
-              className="group inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-[#736e65] hover:text-[#FAF9F6] transition-colors py-2 -ml-2 px-2"
+              className="group inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-[#aba59c] hover:text-[#FAF9F6] transition-colors py-2 -ml-2 px-2"
             >
               <span className="text-[#c4a482] group-hover:-translate-x-1 transition-transform">←</span>
               <span>All Atlas Frames</span>
@@ -71,7 +71,7 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
           <article className="space-y-8 sm:space-y-12 md:space-y-16">
             {/* Story Header */}
             <header className="space-y-4 sm:space-y-6 border-b border-[#201e1b] pb-6 sm:pb-8 md:pb-12">
-              <div className="flex flex-wrap items-baseline justify-between gap-3 text-xs font-mono text-[#736e65] tracking-wider uppercase">
+              <div className="flex flex-wrap items-baseline justify-between gap-3 text-xs font-mono text-[#aba59c] tracking-wider uppercase">
                 <div className="flex items-center gap-2">
                   <span className="text-[#c4a482]">{item.category}</span>
                   {item.location && <span>· {item.location}</span>}
@@ -123,7 +123,7 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
             {item.gallery && item.gallery.length > 0 && (
               <div className="space-y-12 pt-6 border-t border-[#1c1a18]">
                 <div className="space-y-1">
-                  <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#736e65] block">
+                  <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#aba59c] block">
                     SERIES FRAMES
                   </span>
                   <h3 className="text-2xl font-serif text-[#FAF9F6]">
@@ -151,7 +151,7 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
             {/* Journal Loop Integration */}
             {item.relatedJournalSlug && (
               <div className="p-6 md:p-8 bg-[#0c0b0a] border border-[#1e1c1a] rounded-sm space-y-3">
-                <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#c4a482] block">
+                <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#c4a482] block">
                   FROM THE JOURNAL
                 </span>
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -159,7 +159,7 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
                     <h4 className="text-xl font-serif text-[#FAF9F6]">
                       {item.relatedJournalTitle || "Related Dispatch"}
                     </h4>
-                    <p className="text-xs text-[#8a847b] font-light">
+                    <p className="text-xs text-[#aba59c] font-light">
                       Read the roadside observations and field notes written alongside this frame.
                     </p>
                   </div>
@@ -175,7 +175,7 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
             )}
 
             {/* Footer Metadata */}
-            <footer className="pt-6 border-t border-[#1c1a18] flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#5c574f] uppercase tracking-wider">
+            <footer className="pt-6 border-t border-[#1c1a18] flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#aba59c] uppercase tracking-wider">
               <div>Filed under {item.category}</div>
             </footer>
           </article>
@@ -190,14 +190,14 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
                 href={`/atlas/${prevItem.slug}`}
                 className="group flex flex-col space-y-1.5 p-4 rounded-sm border border-transparent hover:border-[#1e1c1a] hover:bg-[#0c0b0a] transition-all"
               >
-                <div className="flex items-center gap-2 text-[10px] text-[#736e65]">
+                <div className="flex items-center gap-2 text-xs text-[#aba59c]">
                   <span className="text-[#c4a482] group-hover:-translate-x-1 transition-transform">←</span>
                   <span>Previous Frame</span>
                 </div>
                 <span className="text-base font-serif normal-case text-[#FAF9F6] group-hover:text-[#c4a482] transition-colors line-clamp-1">
                   {prevItem.title}
                 </span>
-                <span className="text-[10px] text-[#545049]">{prevItem.category}</span>
+                <span className="text-xs text-[#aba59c]">{prevItem.category}</span>
               </Link>
             ) : (
               <div />
@@ -208,14 +208,14 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
                 href={`/atlas/${nextItem.slug}`}
                 className="group flex flex-col space-y-1.5 p-4 rounded-sm border border-transparent hover:border-[#1e1c1a] hover:bg-[#0c0b0a] transition-all sm:text-right sm:items-end"
               >
-                <div className="flex items-center gap-2 text-[10px] text-[#736e65]">
+                <div className="flex items-center gap-2 text-xs text-[#aba59c]">
                   <span>Next Frame</span>
                   <span className="text-[#c4a482] group-hover:translate-x-1 transition-transform">→</span>
                 </div>
                 <span className="text-base font-serif normal-case text-[#FAF9F6] group-hover:text-[#c4a482] transition-colors line-clamp-1">
                   {nextItem.title}
                 </span>
-                <span className="text-[10px] text-[#545049]">{nextItem.category}</span>
+                <span className="text-xs text-[#aba59c]">{nextItem.category}</span>
               </Link>
             ) : (
               <div />
@@ -226,7 +226,7 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
           <div className="mt-10 sm:mt-12 text-center">
             <Link
               href="/atlas"
-              className="inline-block py-2 px-3 text-xs font-mono uppercase tracking-widest text-[#736e65] hover:text-[#FAF9F6] transition-colors"
+              className="inline-block py-2 px-3 text-xs font-mono uppercase tracking-widest text-[#aba59c] hover:text-[#FAF9F6] transition-colors"
             >
               Back to Atlas
             </Link>

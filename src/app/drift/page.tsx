@@ -29,19 +29,19 @@ export default function DriftPage() {
         <Container size="narrow">
         <FadeIn>
           <header className="mb-12 border-b border-[#201e1b] pb-8 sm:mb-16 sm:pb-10">
-            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#c4a482]">
+            <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#c4a482]">
               THE TERMS OF THE ROAD
             </span>
             <h2 className="mt-3 font-serif text-3xl tracking-tight text-[#f5f3ef] sm:text-4xl">
               An open invitation, plainly put.
             </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#a8a399] sm:text-base">
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#c6c0b6] sm:text-base">
               {driftManifesto.tagline}
             </p>
             <ul className="mt-7 grid grid-cols-1 gap-px border border-[#25221e] bg-[#25221e] sm:grid-cols-2">
               {driftManifesto.principles.map((principle, index) => (
                 <li key={principle} className="flex min-h-24 gap-4 bg-[#100f0e] p-5 sm:p-6">
-                  <span className="pt-0.5 font-mono text-[10px] tracking-widest text-[#b08968]">
+                  <span aria-hidden="true" className="pt-0.5 font-mono text-xs tracking-widest text-[#b08968]">
                     0{index + 1}
                   </span>
                   <span className="text-sm leading-relaxed text-[#c4beb4]">{principle}</span>
@@ -54,7 +54,7 @@ export default function DriftPage() {
           {upcomingDrift ? (
             <div className="space-y-12 mb-20">
               <div className="border border-[#262421] bg-[#121110] p-6 sm:p-10 space-y-6">
-                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#201e1b] pb-4 text-xs font-mono text-[#8c867c]">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#201e1b] pb-4 text-xs font-mono text-[#aba59c]">
                   <span className="uppercase tracking-widest text-[#b08968]">
                     NEXT SCHEDULED ESCAPE
                   </span>
@@ -65,18 +65,18 @@ export default function DriftPage() {
                   <h2 className="text-3xl sm:text-4xl font-serif text-[#f5f3ef]">
                     {upcomingDrift.title}
                   </h2>
-                  <p className="text-xs font-mono uppercase tracking-wider text-[#69645c]">
+                  <p className="text-xs font-mono uppercase tracking-wider text-[#aba59c]">
                     📍 {upcomingDrift.destination}
                   </p>
                 </div>
 
-                <p className="text-sm md:text-base text-[#a8a399] leading-relaxed font-light">
+                <p className="text-sm md:text-base text-[#c6c0b6] leading-relaxed font-light">
                   {upcomingDrift.about}
                 </p>
 
                 <div className="border-t border-[#1b1a18] pt-6 space-y-4">
                   <div>
-                    <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#5e5a53] block mb-1">
+                    <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#aba59c] block mb-1">
                       GENERAL ROUTE
                     </span>
                     <p className="text-xs font-mono text-[#c4beb4]">
@@ -86,20 +86,20 @@ export default function DriftPage() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                     <div>
-                      <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#5e5a53] block mb-1">
+                      <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#aba59c] block mb-1">
                         SUITABLE FOR
                       </span>
-                      <ul className="space-y-1 text-xs text-[#8a847b]">
+                      <ul className="space-y-1 text-xs text-[#c6c0b6]">
                         {upcomingDrift.suitableFor.map((item) => (
                           <li key={item}>• {item}</li>
                         ))}
                       </ul>
                     </div>
                     <div>
-                      <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#5e5a53] block mb-1">
+                      <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#aba59c] block mb-1">
                         PRACTICAL REALITY
                       </span>
-                      <ul className="space-y-1 text-xs text-[#8a847b]">
+                      <ul className="space-y-1 text-xs text-[#c6c0b6]">
                         {upcomingDrift.expectations.map((item) => (
                           <li key={item}>• {item}</li>
                         ))}
@@ -115,13 +115,13 @@ export default function DriftPage() {
           ) : (
             <div className="space-y-8 mb-20">
               <div className="mb-12 border-y border-[#1f1d1a] py-7 sm:py-9">
-                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#b08968]">
+                <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#b08968]">
                   WHEN A ROUTE IS SET
                 </span>
                 <p className="mt-3 max-w-2xl font-serif text-xl leading-relaxed text-[#e0dbd3] sm:text-2xl">
                   The next journey will appear here once its route and timing are confirmed.
                 </p>
-                <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#918b82]">
+                <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#c6c0b6]">
                   Until then, you can leave a note about the kind of road you would like to share.
                 </p>
               </div>

@@ -36,12 +36,12 @@ export default function JournalPage() {
         <FadeIn>
           <header className="mb-8 flex flex-col gap-3 border-b border-[#201e1b] pb-5 sm:mb-10 sm:flex-row sm:items-end sm:justify-between sm:pb-6">
             <div>
-              <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#c4a482] block">
+              <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#c4a482] block">
                 FROM THE NOTEBOOK
               </span>
-              <p className="mt-2 text-sm text-[#9e988e]">A few thoughts, kept in order of their arrival.</p>
+              <p className="mt-2 text-sm text-[#c6c0b6]">A few thoughts, kept in order of their arrival.</p>
             </div>
-            <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#777168]">
+            <span className="text-xs font-mono uppercase tracking-[0.18em] text-[#aba59c]">
               {journalEntries.length} notes
             </span>
           </header>
@@ -64,17 +64,17 @@ export default function JournalPage() {
                         {entry.date && (
                           <time
                             dateTime={entry.date}
-                            className="text-xs font-mono text-[#999388] tracking-wider block"
+                            className="text-xs font-mono text-[#aba59c] tracking-wider block"
                           >
                             {entry.date}
                           </time>
                         )}
-                        <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-[#666159]">
+                        <div className="flex flex-wrap items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#aba59c]">
                           <span>{entry.type}</span>
                           {entry.location && <span>· {entry.location}</span>}
                         </div>
                         {entry.readingTime && (
-                          <span className="text-[10px] font-mono text-[#545049] block">
+                          <span className="text-xs font-mono text-[#aba59c] block">
                             {entry.readingTime}
                           </span>
                         )}
@@ -89,7 +89,7 @@ export default function JournalPage() {
                           {entry.excerpt || entry.content}
                         </p>
                         {entry.tags && (
-                          <div className="flex items-center gap-2 pt-1 text-[10px] font-mono uppercase tracking-wider text-[#545049]">
+                          <div className="flex items-center gap-2 pt-1 text-xs font-mono uppercase tracking-wider text-[#aba59c]">
                             {entry.tags.map((tag) => (
                               <span key={tag}>#{tag}</span>
                             ))}
@@ -122,11 +122,11 @@ export default function JournalPage() {
                       className="block space-y-5 sm:space-y-6"
                     >
                       <div className="flex flex-wrap items-baseline justify-between gap-3 sm:gap-4 border-b border-[#201e1b] pb-3 sm:pb-4">
-                        <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-[#736e65]">
+                        <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-[#aba59c]">
                           <span className="text-[#c4a482]">{entry.type}</span>
                           {entry.location && <span>· {entry.location}</span>}
                         </div>
-                        <div className="flex items-center gap-4 text-xs font-mono text-[#8a847b]">
+                        <div className="flex items-center gap-4 text-xs font-mono text-[#aba59c]">
                           {entry.date && <time dateTime={entry.date}>{entry.date}</time>}
                           {entry.readingTime && (
                             <span>{entry.date ? "· " : ""}{entry.readingTime}</span>
@@ -172,7 +172,7 @@ export default function JournalPage() {
                       href={`/journal/${entry.slug}`}
                       className="block space-y-3 sm:space-y-4 max-w-2xl mx-auto text-center md:text-left md:mx-0"
                     >
-                      <div className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-widest text-[#666159] justify-center md:justify-start">
+                      <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-[#aba59c] justify-center md:justify-start">
                         <span>{entry.type}</span>
                         {entry.date && (
                           <>
@@ -186,7 +186,7 @@ export default function JournalPage() {
                         &ldquo;{entry.excerpt || entry.title}&rdquo;
                       </blockquote>
 
-                      <p className="text-sm text-[#8a847b] font-light max-w-xl mx-auto md:mx-0">
+                      <p className="text-sm text-[#c6c0b6] font-light max-w-xl mx-auto md:mx-0">
                         {entry.content}
                       </p>
                     </Link>
@@ -201,7 +201,7 @@ export default function JournalPage() {
                     href={`/journal/${entry.slug}`}
                     className="grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline"
                   >
-                    <div className="md:col-span-3 text-xs font-mono text-[#736e65] tracking-wider">
+                    <div className="md:col-span-3 text-xs font-mono text-[#aba59c] tracking-wider">
                       <span className="uppercase">{entry.type}</span>
                       {entry.date && <time dateTime={entry.date} className="block">{entry.date}</time>}
                     </div>
@@ -210,13 +210,13 @@ export default function JournalPage() {
                       <h2 className="text-xl sm:text-2xl font-serif text-[#FAF9F6] group-hover:text-[#c4a482] transition-colors">
                         {entry.title}
                       </h2>
-                      <p className="text-sm text-[#999388] font-light line-clamp-2">
+                      <p className="text-sm text-[#c6c0b6] font-light line-clamp-2">
                         {entry.excerpt || entry.content}
                       </p>
                     </div>
 
                     <div className="md:col-span-1 text-right hidden md:block">
-                      <span className="text-sm font-mono text-[#545049] group-hover:text-[#FAF9F6] group-hover:translate-x-1 inline-block transition-all">
+                      <span className="text-sm font-mono text-[#aba59c] group-hover:text-[#FAF9F6] group-hover:translate-x-1 inline-block transition-all">
                         →
                       </span>
                     </div>

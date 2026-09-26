@@ -25,7 +25,7 @@ export default function NotFoundPage() {
           <Link href="/" className="inline-flex min-h-11 items-center border border-white/30 px-5 text-xs font-mono uppercase tracking-[0.18em] text-[#f5f3ef] hover:border-[#c4a482]">Return home</Link>
           <Link href="/atlas" className="inline-flex min-h-11 items-center border border-white/15 px-5 text-xs font-mono uppercase tracking-[0.18em] text-[#c4a482] hover:border-white/40">Explore the Atlas</Link>
         </div>
-        <p className="mt-5 text-[9px] font-mono uppercase tracking-[0.15em] text-white/50">AI-generated photo study · not original photography</p>
+        <p className="mt-5 text-xs font-mono uppercase tracking-[0.15em] text-white/75">AI-generated photo study · not original photography</p>
       </div>
     </section>
   );

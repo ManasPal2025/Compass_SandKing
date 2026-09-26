@@ -68,11 +68,11 @@ export function EditorialImage({
               {alt}
             </p>
             {location && (
-              <span className="text-[10px] uppercase font-mono tracking-[0.25em] text-[#5c5750] mt-1">
+              <span className="text-xs uppercase font-mono tracking-[0.25em] text-[#aba59c] mt-1">
                 📍 {location}
               </span>
             )}
-            <span className="text-[9px] uppercase font-mono tracking-wider text-[#47433d] mt-2">
+            <span className="text-xs uppercase font-mono tracking-wider text-[#aba59c] mt-2">
               Image unavailable
             </span>
           </div>
@@ -92,7 +92,7 @@ export function EditorialImage({
               {/* Identify illustrative photography until original images are available. */}
               {showGeneratedAssetNotice && (
                 <div className="absolute bottom-2.5 right-2.5 pointer-events-none z-10">
-                  <span className="px-2 py-0.5 text-[9px] font-mono tracking-widest uppercase bg-[#0c0b0a]/80 text-[#9e978c] border border-[#262421] backdrop-blur-xs">
+                  <span className="px-2.5 py-1 text-xs font-mono tracking-widest uppercase bg-[#0c0b0a]/90 text-[#f5f3ef] border border-white/20 backdrop-blur-xs">
                     AI-generated image
                   </span>
                 </div>
@@ -109,11 +109,11 @@ export function EditorialImage({
       {(caption || location || date) && (
         <figcaption className="mt-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 text-xs">
           {caption && (
-            <span className="text-[#a8a297] font-light leading-relaxed max-w-prose">
+            <span className="text-[#c6c0b6] font-light leading-relaxed max-w-prose">
               {caption}
             </span>
           )}
-          <div className="flex items-center gap-3 text-[11px] font-mono tracking-wider uppercase text-[#736e65] ml-auto shrink-0">
+          <div className="flex items-center gap-3 text-xs font-mono tracking-wider uppercase text-[#aba59c] ml-auto shrink-0">
             {location && <span>{location}</span>}
             {location && date && <span className="opacity-40">·</span>}
             {date && <span>{date}</span>}

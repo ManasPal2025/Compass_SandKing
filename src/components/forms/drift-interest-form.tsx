@@ -66,7 +66,7 @@ export function DriftInterestForm() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <label htmlFor="drift-name" className="text-[11px] font-mono uppercase tracking-wider text-[#8a847b] block">
+          <label htmlFor="drift-name" className="text-xs font-mono uppercase tracking-wider text-[#aba59c] block">
             Your Name *
           </label>
           <input
@@ -78,12 +78,12 @@ export function DriftInterestForm() {
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             placeholder="First and last name"
-            className="w-full bg-[#181715] border border-[#2b2824] px-4 py-3 text-base text-[#f5f3ef] placeholder-[#4f4b45] focus:outline-none focus:border-[#b08968] transition-colors"
+            className="w-full bg-[#181715] border border-[#2b2824] px-4 py-3 text-base text-[#f5f3ef] placeholder-[#857f76] focus:outline-none focus:border-[#b08968] transition-colors"
           />
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="drift-contact" className="text-[11px] font-mono uppercase tracking-wider text-[#8a847b] block">
+          <label htmlFor="drift-contact" className="text-xs font-mono uppercase tracking-wider text-[#aba59c] block">
             Email or Phone *
           </label>
           <input
@@ -95,12 +95,12 @@ export function DriftInterestForm() {
             value={formData.emailOrPhone}
             onChange={(e) => setFormData({ ...formData, emailOrPhone: e.target.value })}
             placeholder="How to reach you"
-            className="w-full bg-[#181715] border border-[#2b2824] px-4 py-3 text-base text-[#f5f3ef] placeholder-[#4f4b45] focus:outline-none focus:border-[#b08968] transition-colors"
+            className="w-full bg-[#181715] border border-[#2b2824] px-4 py-3 text-base text-[#f5f3ef] placeholder-[#857f76] focus:outline-none focus:border-[#b08968] transition-colors"
           />
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="drift-city" className="text-[11px] font-mono uppercase tracking-wider text-[#8a847b] block">
+          <label htmlFor="drift-city" className="text-xs font-mono uppercase tracking-wider text-[#aba59c] block">
             City of Residence *
           </label>
           <input
@@ -112,12 +112,12 @@ export function DriftInterestForm() {
             value={formData.city}
             onChange={(e) => setFormData({ ...formData, city: e.target.value })}
             placeholder="e.g. Bhubaneswar, Bangalore, Delhi"
-            className="w-full bg-[#181715] border border-[#2b2824] px-4 py-3 text-base text-[#f5f3ef] placeholder-[#4f4b45] focus:outline-none focus:border-[#b08968] transition-colors"
+            className="w-full bg-[#181715] border border-[#2b2824] px-4 py-3 text-base text-[#f5f3ef] placeholder-[#857f76] focus:outline-none focus:border-[#b08968] transition-colors"
           />
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="drift-vehicle" className="text-[11px] font-mono uppercase tracking-wider text-[#8a847b] block">
+          <label htmlFor="drift-vehicle" className="text-xs font-mono uppercase tracking-wider text-[#aba59c] block">
             Machine / Vehicle
           </label>
           <input
@@ -127,13 +127,13 @@ export function DriftInterestForm() {
             value={formData.vehicleOrRide}
             onChange={(e) => setFormData({ ...formData, vehicleOrRide: e.target.value })}
             placeholder="What would you ride or drive?"
-            className="w-full bg-[#181715] border border-[#2b2824] px-4 py-3 text-base text-[#f5f3ef] placeholder-[#4f4b45] focus:outline-none focus:border-[#b08968] transition-colors"
+            className="w-full bg-[#181715] border border-[#2b2824] px-4 py-3 text-base text-[#f5f3ef] placeholder-[#857f76] focus:outline-none focus:border-[#b08968] transition-colors"
           />
         </div>
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="drift-instagram" className="text-[11px] font-mono uppercase tracking-wider text-[#8a847b] block">
+        <label htmlFor="drift-instagram" className="text-xs font-mono uppercase tracking-wider text-[#aba59c] block">
           Instagram Handle (Optional)
         </label>
         <input
@@ -143,12 +143,12 @@ export function DriftInterestForm() {
           value={formData.instagram}
           onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
           placeholder="@yourhandle"
-          className="w-full bg-[#181715] border border-[#2b2824] px-4 py-3 text-base text-[#f5f3ef] placeholder-[#4f4b45] focus:outline-none focus:border-[#b08968] transition-colors"
+          className="w-full bg-[#181715] border border-[#2b2824] px-4 py-3 text-base text-[#f5f3ef] placeholder-[#857f76] focus:outline-none focus:border-[#b08968] transition-colors"
         />
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="drift-reason" className="text-[11px] font-mono uppercase tracking-wider text-[#8a847b] block">
+        <label htmlFor="drift-reason" className="text-xs font-mono uppercase tracking-wider text-[#aba59c] block">
           Why do you want to Drift? *
         </label>
         <textarea
@@ -159,7 +159,7 @@ export function DriftInterestForm() {
           value={formData.reason}
           onChange={(e) => setFormData({ ...formData, reason: e.target.value })}
           placeholder="Tell Saraswat what kind of road you are looking for..."
-          className="w-full bg-[#181715] border border-[#2b2824] p-4 text-base text-[#f5f3ef] placeholder-[#4f4b45] focus:outline-none focus:border-[#b08968] transition-colors resize-none"
+          className="w-full bg-[#181715] border border-[#2b2824] p-4 text-base text-[#f5f3ef] placeholder-[#857f76] focus:outline-none focus:border-[#b08968] transition-colors resize-none"
         />
       </div>
 

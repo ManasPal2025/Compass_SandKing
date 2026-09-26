@@ -94,13 +94,13 @@ export default async function MachineDetailPage({
 
             {/* Character Notes */}
             <div className="border-t border-[#1f1d1b] pt-8 space-y-4">
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#736e65] block">
+              <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#aba59c] block">
                 CHARACTERISTICS & TRAITS
               </span>
-              <ul className="space-y-2 text-xs font-mono text-[#8a847b]">
+              <ul className="space-y-2 text-xs font-mono text-[#aba59c]">
                 {machine.keyNotes.map((note) => (
                   <li key={note} className="flex items-start gap-2">
-                    <span className="text-[#b08968]">―</span>
+                    <span className="text-[#c4a482]">―</span>
                     <span>{note}</span>
                   </li>
                 ))}
@@ -110,31 +110,31 @@ export default async function MachineDetailPage({
             {/* Specs Second */}
             {machine.specs && (
               <div className="border-t border-[#1f1d1b] pt-8 space-y-4">
-                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#736e65] block">
+                <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#aba59c] block">
                   MECHANICAL NOTES
                 </span>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 text-xs font-mono">
                   {machine.specs.displacement && (
                     <div>
-                      <span className="block text-[10px] uppercase text-[#545049]">Engine</span>
+                      <span className="block text-xs uppercase text-[#aba59c]">Engine</span>
                       <span className="text-[#f5f3ef] mt-0.5 block">{machine.specs.displacement}</span>
                     </div>
                   )}
                   {machine.specs.power && (
                     <div>
-                      <span className="block text-[10px] uppercase text-[#545049]">Output</span>
+                      <span className="block text-xs uppercase text-[#aba59c]">Output</span>
                       <span className="text-[#f5f3ef] mt-0.5 block">{machine.specs.power}</span>
                     </div>
                   )}
                   {machine.specs.range && (
                     <div>
-                      <span className="block text-[10px] uppercase text-[#545049]">Range</span>
+                      <span className="block text-xs uppercase text-[#aba59c]">Range</span>
                       <span className="text-[#f5f3ef] mt-0.5 block">{machine.specs.range}</span>
                     </div>
                   )}
                   {machine.specs.characterTrait && (
                     <div className="col-span-2">
-                      <span className="block text-[10px] uppercase text-[#545049]">Temperament</span>
+                      <span className="block text-xs uppercase text-[#aba59c]">Temperament</span>
                       <span className="text-[#f5f3ef] mt-0.5 block">{machine.specs.characterTrait}</span>
                     </div>
                   )}

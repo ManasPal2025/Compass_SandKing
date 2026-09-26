@@ -30,7 +30,7 @@ export default async function DriftTripDetailPage({
           <div className="mb-12">
             <Link
               href="/drift"
-              className="text-xs font-mono tracking-widest uppercase text-[#736e65] hover:text-[#f5f3ef] transition-colors"
+              className="text-xs font-mono tracking-widest uppercase text-[#aba59c] hover:text-[#f5f3ef] transition-colors"
             >
               ← Back to Drift
             </Link>
@@ -39,8 +39,8 @@ export default async function DriftTripDetailPage({
           <article className="space-y-12">
             {/* Header */}
             <div className="space-y-3 border-b border-[#201e1b] pb-8">
-              <div className="flex flex-wrap items-center justify-between text-xs font-mono text-[#8c867c]">
-                <span className="text-[#b08968] uppercase tracking-widest">
+              <div className="flex flex-wrap items-center justify-between text-xs font-mono text-[#aba59c]">
+                <span className="text-[#c4a482] uppercase tracking-widest">
                   EXPEDITION PROFILE
                 </span>
                 <span>{upcomingDrift.duration} · {upcomingDrift.dates}</span>
@@ -48,14 +48,14 @@ export default async function DriftTripDetailPage({
               <h1 className="text-4xl sm:text-6xl font-serif text-[#f5f3ef] tracking-tight">
                 {upcomingDrift.title}
               </h1>
-              <p className="text-xs font-mono uppercase tracking-wider text-[#69645c]">
+              <p className="text-xs font-mono uppercase tracking-wider text-[#aba59c]">
                 📍 {upcomingDrift.destination}
               </p>
             </div>
 
             {/* About */}
             <div className="space-y-4">
-              <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#736e65] block">
+              <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#aba59c] block">
                 WHAT THIS ROAD IS ABOUT
               </span>
               <p className="text-base sm:text-lg text-[#cbc5bb] font-light leading-relaxed">
@@ -66,7 +66,7 @@ export default async function DriftTripDetailPage({
             {/* Route & Practicalities */}
             <div className="border-t border-[#1f1d1b] pt-8 space-y-6">
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#736e65] block mb-2">
+                <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#aba59c] block mb-2">
                   ROUTE OUTLINE
                 </span>
                 <p className="text-xs font-mono text-[#f5f3ef] bg-[#141312] border border-[#22201e] p-4">
@@ -76,13 +76,13 @@ export default async function DriftTripDetailPage({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
                 <div className="space-y-2">
-                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#736e65] block">
+                  <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#aba59c] block">
                     WHO SHOULD COME
                   </span>
-                  <ul className="space-y-1 text-xs text-[#8a847b]">
+                  <ul className="space-y-1 text-xs text-[#aba59c]">
                     {upcomingDrift.suitableFor.map((item) => (
                       <li key={item} className="flex items-start gap-2">
-                        <span className="text-[#b08968]">―</span>
+                        <span className="text-[#c4a482]">―</span>
                         <span>{item}</span>
                       </li>
                     ))}
@@ -90,13 +90,13 @@ export default async function DriftTripDetailPage({
                 </div>
 
                 <div className="space-y-2">
-                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#736e65] block">
+                  <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#aba59c] block">
                     PRACTICAL REALITY
                   </span>
-                  <ul className="space-y-1 text-xs text-[#8a847b]">
+                  <ul className="space-y-1 text-xs text-[#aba59c]">
                     {upcomingDrift.expectations.map((item) => (
                       <li key={item} className="flex items-start gap-2">
-                        <span className="text-[#b08968]">―</span>
+                        <span className="text-[#c4a482]">―</span>
                         <span>{item}</span>
                       </li>
                     ))}

@@ -12,7 +12,7 @@
   --color-border-subtle: #1b1a18;
   --color-fg-primary: #f5f3ef;
   --color-fg-secondary: #aba59c;
-  --color-fg-muted: #6e6962;
+  --color-fg-muted: #aba59c;
   --color-earth-accent: #b08968;
   --color-earth-subtle: #7f6149;
 }
@@ -21,7 +21,10 @@
   --bg-canvas: #0c0b0a;
   --fg-primary: #f5f3ef;
   --fg-secondary: #aba59c;
-  --fg-muted: #6e6962;
+  --fg-muted: #9e988e;
+  --text-muted: #aba59c;
+  --text-subtle: #b8b2a8;
+  --label: #c4a482;
 }
 
 html {
@@ -189,8 +192,8 @@ body {
   border: 1px solid rgba(245, 243, 239, 0.13);
   border-radius: 999px;
   background: rgba(12, 11, 10, 0.94);
-  color: #a8a195;
-  font: 500 9px/1 var(--font-plus-jakarta-sans), sans-serif;
+  color: var(--text-muted);
+  font: 500 12px/1 var(--font-plus-jakarta-sans), sans-serif;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-align: left;
@@ -256,8 +259,8 @@ body {
   align-items: center;
   gap: 0.5rem;
   padding: 0 0.65rem;
-  color: #9e978c;
-  font: 500 9px/1 var(--font-plus-jakarta-sans), sans-serif;
+  color: var(--text-muted);
+  font: 500 12px/1 var(--font-plus-jakarta-sans), sans-serif;
   letter-spacing: 0.1em;
   text-decoration: none;
   text-transform: uppercase;
@@ -269,13 +272,13 @@ body {
 }
 
 .journey-film-menu-link > span:first-child {
-  color: #6e6962;
-  font-size: 8px;
+  color: var(--text-muted);
+  font-size: 11px;
 }
 
 .journey-film-menu-link > span:last-child {
-  color: #c4a482;
-  font-size: 7px;
+  color: var(--label);
+  font-size: 11px;
 }
 
 .journey-film-menu-link.is-active {

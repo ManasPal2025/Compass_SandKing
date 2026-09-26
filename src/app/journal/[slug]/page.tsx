@@ -63,7 +63,7 @@ export default async function JournalEntryPage({ params }: PageProps) {
           <div className="mb-8 sm:mb-12 md:mb-16">
             <Link
               href="/journal"
-              className="group inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-[#736e65] hover:text-[#FAF9F6] transition-colors py-2 -ml-2 px-2"
+              className="group inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-[#aba59c] hover:text-[#FAF9F6] transition-colors py-2 -ml-2 px-2"
             >
               <span className="text-[#c4a482] group-hover:-translate-x-1 transition-transform">←</span>
               <span>All Journal Entries</span>
@@ -75,7 +75,7 @@ export default async function JournalEntryPage({ params }: PageProps) {
           <article className="space-y-8 sm:space-y-10 md:space-y-14">
             {/* Entry Header */}
             <header className="space-y-4 sm:space-y-6 border-b border-[#201e1b] pb-6 sm:pb-8 md:pb-12">
-              <div className="flex flex-wrap items-baseline justify-between gap-3 text-xs font-mono text-[#736e65] tracking-wider uppercase">
+              <div className="flex flex-wrap items-baseline justify-between gap-3 text-xs font-mono text-[#aba59c] tracking-wider uppercase">
                 <div className="flex items-center gap-2">
                   <span className="text-[#c4a482]">{entry.type}</span>
                   {entry.location && <span>· {entry.location}</span>}
@@ -85,7 +85,7 @@ export default async function JournalEntryPage({ params }: PageProps) {
                   {entry.readingTime && (
                     <>
                       {entry.date && <span>·</span>}
-                      <span className="text-[#545049]">{entry.readingTime}</span>
+                      <span className="text-[#aba59c]">{entry.readingTime}</span>
                     </>
                   )}
                 </div>
@@ -150,10 +150,10 @@ export default async function JournalEntryPage({ params }: PageProps) {
             {/* Metadata Footer: Tags */}
             <footer className="pt-6 sm:pt-8 border-t border-[#1c1a18] space-y-4">
               {entry.tags && entry.tags.length > 0 && (
-                <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-[#5c574f]">
-                  <span className="text-[#736e65]">Context:</span>
+                <div className="flex flex-wrap items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#aba59c]">
+                  <span className="text-[#aba59c]">Context:</span>
                   {entry.tags.map((tag) => (
-                    <span key={tag} className="text-[#8a847b]">
+                    <span key={tag} className="text-[#c6c0b6]">
                       #{tag}
                     </span>
                   ))}
@@ -173,14 +173,14 @@ export default async function JournalEntryPage({ params }: PageProps) {
                 href={`/journal/${prevEntry.slug}`}
                 className="group flex flex-col space-y-1.5 p-4 rounded-sm border border-transparent hover:border-[#1e1c1a] hover:bg-[#0c0b0a] transition-all"
               >
-                <div className="flex items-center gap-2 text-[10px] text-[#736e65]">
+                <div className="flex items-center gap-2 text-xs text-[#aba59c]">
                   <span className="text-[#c4a482] group-hover:-translate-x-1 transition-transform">←</span>
                   <span>Previous Entry</span>
                 </div>
                 <span className="text-base font-serif normal-case text-[#FAF9F6] group-hover:text-[#c4a482] transition-colors line-clamp-1">
                   {prevEntry.title}
                 </span>
-                {prevEntry.readingTime && <span className="text-[10px] text-[#545049]">{prevEntry.readingTime}</span>}
+                {prevEntry.readingTime && <span className="text-xs text-[#aba59c]">{prevEntry.readingTime}</span>}
               </Link>
             ) : (
               <div />
@@ -191,14 +191,14 @@ export default async function JournalEntryPage({ params }: PageProps) {
                 href={`/journal/${nextEntry.slug}`}
                 className="group flex flex-col space-y-1.5 p-4 rounded-sm border border-transparent hover:border-[#1e1c1a] hover:bg-[#0c0b0a] transition-all sm:text-right sm:items-end"
               >
-                <div className="flex items-center gap-2 text-[10px] text-[#736e65]">
+                <div className="flex items-center gap-2 text-xs text-[#aba59c]">
                   <span>Next Entry</span>
                   <span className="text-[#c4a482] group-hover:translate-x-1 transition-transform">→</span>
                 </div>
                 <span className="text-base font-serif normal-case text-[#FAF9F6] group-hover:text-[#c4a482] transition-colors line-clamp-1">
                   {nextEntry.title}
                 </span>
-                {nextEntry.readingTime && <span className="text-[10px] text-[#545049]">{nextEntry.readingTime}</span>}
+                {nextEntry.readingTime && <span className="text-xs text-[#aba59c]">{nextEntry.readingTime}</span>}
               </Link>
             ) : (
               <div />
@@ -209,7 +209,7 @@ export default async function JournalEntryPage({ params }: PageProps) {
           <div className="mt-12 text-center">
             <Link
               href="/journal"
-              className="text-xs font-mono uppercase tracking-widest text-[#736e65] hover:text-[#FAF9F6] transition-colors"
+              className="text-xs font-mono uppercase tracking-widest text-[#aba59c] hover:text-[#FAF9F6] transition-colors"
             >
               Back to Journal Overview
             </Link>

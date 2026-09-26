@@ -139,7 +139,7 @@ export function Header() {
 
         <nav
           aria-label="Main navigation"
-          className="hidden items-center gap-3 xl:gap-5 text-[11px] xl:text-xs font-mono tracking-[0.14em] uppercase text-[#aba59c] lg:flex"
+          className="hidden items-center gap-3 xl:gap-5 text-xs font-mono tracking-[0.14em] uppercase text-[#aba59c] lg:flex"
         >
           {mainNavItems.map((item, index) => {
             const isActive = pathname.startsWith(item.href);
@@ -151,7 +151,7 @@ export function Header() {
                   aria-current={isActive ? "page" : undefined}
                   onClick={() => setIsMenuOpen(false)}
                     className={`group inline-flex items-center gap-1.5 transition-colors duration-200 relative min-h-11 px-1.5 hover:text-[#f5f3ef] active:text-[#c4a482] focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-2 focus-visible:outline-[#c4a482] ${
-                    isActive ? "text-[#f5f3ef] font-medium" : "text-[#8a847b]"
+                    isActive ? "text-[#f5f3ef] font-medium" : "text-[#aba59c]"
                   }`}
                 >
                   <Icon
@@ -188,9 +188,9 @@ export function Header() {
                   href={item.href}
                   aria-current={isActive ? "page" : undefined}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`flex min-h-12 items-center gap-3 border-b border-white/[0.06] last:border-0 text-xs font-mono uppercase tracking-[0.16em] ${isActive ? "text-[#f5f3ef]" : "text-[#aaa398]"}`}
+                  className={`flex min-h-12 items-center gap-3 border-b border-white/[0.06] last:border-0 text-xs font-mono uppercase tracking-[0.16em] ${isActive ? "text-[#f5f3ef]" : "text-[#aba59c]"}`}
                 >
-                  <span className="w-5 text-[10px] text-[#8b725d]">0{index + 1}</span>
+                  <span aria-hidden="true" className="w-5 text-xs text-[#c4a482]">0{index + 1}</span>
                   <Icon aria-hidden="true" className="h-4 w-4 text-[#c4a482]" strokeWidth={1.5} />
                   <span>{item.label}</span>
                 </Link>
