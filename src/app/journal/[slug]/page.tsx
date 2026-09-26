@@ -6,6 +6,7 @@ import { Container, Section } from "@/components/layout/container";
 import { FadeIn } from "@/components/layout/fade-in";
 import { EditorialImage } from "@/components/ui/editorial-image";
 import { journalEntries } from "@/data/journal";
+import { SampleContentNotice } from "@/components/ui/sample-content-notice";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -69,6 +70,8 @@ export default async function JournalEntryPage({ params }: PageProps) {
             </Link>
           </div>
 
+          <SampleContentNotice className="mb-8 max-w-2xl" />
+
           <article className="space-y-8 sm:space-y-10 md:space-y-14">
             {/* Entry Header */}
             <header className="space-y-4 sm:space-y-6 border-b border-[#201e1b] pb-6 sm:pb-8 md:pb-12">
@@ -78,10 +81,10 @@ export default async function JournalEntryPage({ params }: PageProps) {
                   {entry.location && <span>· {entry.location}</span>}
                 </div>
                 <div className="flex items-center gap-3">
-                  <time dateTime={entry.date}>{entry.date}</time>
+                  {entry.date && <time dateTime={entry.date}>{entry.date}</time>}
                   {entry.readingTime && (
                     <>
-                      <span>·</span>
+                      {entry.date && <span>·</span>}
                       <span className="text-[#545049]">{entry.readingTime}</span>
                     </>
                   )}
@@ -144,7 +147,7 @@ export default async function JournalEntryPage({ params }: PageProps) {
               </div>
             )}
 
-            {/* Metadata Footer: Tags & Structural Note */}
+            {/* Metadata Footer: Tags */}
             <footer className="pt-6 sm:pt-8 border-t border-[#1c1a18] space-y-4">
               {entry.tags && entry.tags.length > 0 && (
                 <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-[#5c574f]">
@@ -157,11 +160,6 @@ export default async function JournalEntryPage({ params }: PageProps) {
                 </div>
               )}
 
-              {entry.isStructuralPlaceholder && (
-                <div className="pt-2 text-[10px] font-mono text-[#4a4742] tracking-wider uppercase">
-                  [Structural entry · easily swappable with authentic writing]
-                </div>
-              )}
             </footer>
           </article>
 
@@ -182,7 +180,7 @@ export default async function JournalEntryPage({ params }: PageProps) {
                 <span className="text-base font-serif normal-case text-[#FAF9F6] group-hover:text-[#c4a482] transition-colors line-clamp-1">
                   {prevEntry.title}
                 </span>
-                <span className="text-[10px] text-[#545049]">{prevEntry.date}</span>
+                {prevEntry.readingTime && <span className="text-[10px] text-[#545049]">{prevEntry.readingTime}</span>}
               </Link>
             ) : (
               <div />
@@ -200,7 +198,7 @@ export default async function JournalEntryPage({ params }: PageProps) {
                 <span className="text-base font-serif normal-case text-[#FAF9F6] group-hover:text-[#c4a482] transition-colors line-clamp-1">
                   {nextEntry.title}
                 </span>
-                <span className="text-[10px] text-[#545049]">{nextEntry.date}</span>
+                {nextEntry.readingTime && <span className="text-[10px] text-[#545049]">{nextEntry.readingTime}</span>}
               </Link>
             ) : (
               <div />

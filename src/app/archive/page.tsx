@@ -5,6 +5,9 @@ import { FadeIn } from "@/components/layout/fade-in";
 import { ArchiveStream } from "@/components/archive/archive-stream";
 import { archiveItems } from "@/data/archive";
 import { AtmosphereLayer } from "@/components/atmosphere/atmosphere-layer";
+import { ImmersivePageHero } from "@/components/layout/immersive-page-hero";
+import { AtlasExplorer } from "@/components/archive/atlas-explorer";
+import { PhotoGuessingGame } from "@/components/archive/photo-guessing-game";
 
 export const metadata: Metadata = {
   title: "Archive — Saraswat Mishra",
@@ -18,27 +21,40 @@ export const metadata: Metadata = {
 
 export default function ArchivePage() {
   return (
-    <Section spacing="default" className="min-h-screen">
+    <>
       <AtmosphereLayer variant="dew" />
-      <Container size="wide">
+      <ImmersivePageHero
+        kicker="05 / VISUAL MEMORY"
+        title="Atlas"
+        description="Follow the photographs by country and place, or wander the visual archive one frame at a time."
+        imageSrc="/images/placeholders/archive-ridge.webp"
+        imageAlt="A ridge road above a valley filled with cloud"
+        actionLabel="Explore by place"
+        actionHref="#atlas-explorer"
+      />
+      <Section id="archive-frames" spacing="default" className="min-h-screen">
+        <Container size="wide">
         <FadeIn>
-          {/* Quiet Editorial Header */}
-          <header className="space-y-3 sm:space-y-4 mb-10 sm:mb-16 md:mb-20 border-b border-[#201e1b] pb-8 sm:pb-12 md:pb-16">
-            <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[#736e65] block">
-              05 / VISUAL MEMORY
-            </span>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif text-[#FAF9F6] tracking-tight">
-              Archive
-            </h1>
-            <p className="text-base sm:text-lg text-[#A8A195] font-light max-w-2xl leading-relaxed">
-              Photographs, roads, machines, and places. An evolving photographic memory of Saraswat&apos;s world, captured one turn at a time.
-            </p>
-          </header>
+          <AtlasExplorer />
 
-          {/* Asymmetric Visual Archive Stream with Understated Filtering */}
-          <ArchiveStream items={archiveItems} />
+          <div id="archive-frames" className="mt-20 border-t border-[#24211d] pt-12 sm:mt-28 sm:pt-16">
+            <header className="mb-8 flex flex-col gap-3 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#c4a482] block">THE FRAME LIBRARY</span>
+                <h2 className="mt-2 font-serif text-3xl text-[#f5f3ef] sm:text-4xl">Browse every sample frame</h2>
+                <p className="mt-2 text-sm text-[#9e988e]">Filter by subject and open any frame for its accompanying note.</p>
+              </div>
+              <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#777168]">{archiveItems.length} sample frames</span>
+            </header>
+            <ArchiveStream items={archiveItems} />
+          </div>
+
+          <div className="mt-20 border-t border-[#24211d] pt-12 sm:mt-28 sm:pt-16">
+            <PhotoGuessingGame />
+          </div>
         </FadeIn>
-      </Container>
-    </Section>
+        </Container>
+      </Section>
+    </>
   );
 }

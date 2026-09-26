@@ -5,6 +5,16 @@ import { Container, Section } from "@/components/layout/container";
 import { FadeIn } from "@/components/layout/fade-in";
 import { EditorialImage } from "@/components/ui/editorial-image";
 import { garageMachines } from "@/data/garage";
+import { SampleContentNotice } from "@/components/ui/sample-content-notice";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const machine = garageMachines.find((item) => item.slug === slug);
+  return machine
+    ? { title: `${machine.name} — Machines · Saraswat Mishra`, description: machine.story }
+    : { title: "Machine not found — Saraswat Mishra" };
+}
 
 export async function generateStaticParams() {
   return garageMachines.map((machine) => ({
@@ -38,23 +48,24 @@ export default async function MachineDetailPage({
             </Link>
           </div>
 
+          <SampleContentNotice className="mb-8 max-w-2xl" />
+
           <article className="space-y-12">
             {/* Header */}
             <div className="space-y-2 border-b border-[#201e1b] pb-8">
               <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#8c867c]">
-                {machine.type} · {machine.year} · {machine.role}
+                {machine.type}{machine.year ? ` · ${machine.year}` : ""} · {machine.role}
               </span>
               <h1 className="text-4xl sm:text-6xl font-serif text-[#f5f3ef] tracking-tight">
                 {machine.name}
               </h1>
-              <p className="text-xs font-mono uppercase tracking-wider text-[#69645c]">
-                {machine.model}
-              </p>
+              {machine.model && <p className="text-xs font-mono uppercase tracking-wider text-[#69645c]">{machine.model}</p>}
             </div>
 
             {/* Hero Visual Frame */}
             <EditorialImage
-              alt={`${machine.name} — ${machine.model}`}
+              src={machine.heroImage.src}
+              alt={machine.heroImage.alt}
               aspectRatio="landscape"
               caption={machine.heroImage.caption}
             />
@@ -67,6 +78,17 @@ export default async function MachineDetailPage({
               <p className="text-base sm:text-lg text-[#cbc5bb] font-light leading-relaxed">
                 {machine.story}
               </p>
+            </div>
+
+            <div className="grid gap-6 border-l border-[#8f7155] py-2 pl-5 sm:grid-cols-2">
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#81766b]">Sample motto</span>
+                <p className="mt-2 font-serif text-xl italic text-[#e0d4c7]">“{machine.sampleMotto}”</p>
+              </div>
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#81766b]">Sample role</span>
+                <p className="mt-2 text-sm leading-relaxed text-[#aaa398]">{machine.sampleUse}</p>
+              </div>
             </div>
 
             {/* Character Notes */}

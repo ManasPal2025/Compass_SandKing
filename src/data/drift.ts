@@ -4,43 +4,18 @@ import { DriftTrip } from "@/types";
  * DRIFT PHILOSOPHY & MANIFESTO
  * Drift is completely non-commercial.
  * No packages, no tour guides, no bookings, no commercial transactions.
- * "Saraswat is already going somewhere. If this sounds like your kind of trip, you can ask to come along."
+ * A non-commercial invitation built around open roads and unhurried travel.
  */
 export const driftManifesto = {
   headline: "THE OPEN PASSENGER SEAT",
-  tagline: "Sometimes you don't need another tourist vacation. You just need to step away from monotonous routine for a few days.",
+  tagline: "Sometimes the best way out of routine is a road with no reason to hurry.",
   principles: [
-    "Saraswat is already heading out on this road.",
-    "This is not a packaged tour, a commercial booking, or a guided holiday.",
-    "Everyone pulls their own weight, splits fuel and chai, and respects the silence of the road.",
-    "No itineraries etched in stone — only general directions and an open horizon.",
+    "An invitation to travel together, never a packaged tour.",
+    "No booking fee, guide service, or paid itinerary.",
+    "Each traveller remains responsible for their own costs and plans.",
+    "Leave room for weather, rest, and the turn you did not expect.",
   ],
 };
 
-/**
- * STRUCTURAL PLACEHOLDER FOR UPCOMING DRIFT
- * Flagged with isStructuralPlaceholder: true.
- * Zero invented routes, destinations, or dates.
- */
-export const upcomingDrift: DriftTrip | null = {
-  id: "drift-expedition-01",
-  slug: "upcoming-drift-01",
-  title: "Upcoming Drift [Route TBD]",
-  destination: "Route Under Charting",
-  dates: "Upcoming Season",
-  duration: "Provisional Timeline",
-  generalRoute: "Route outline to be confirmed by Saraswat.",
-  about: "Provisional expedition profile. Saraswat charts journeys for himself; when the route and timing are confirmed, this will outline the journey for like-minded people interested in asking to join.",
-  suitableFor: [
-    "Riders or drivers comfortable with unhurried pace and variable road conditions",
-    "People who remain adaptable when weather or terrain requires route changes",
-    "Those who value the solitude of the road over structured commercial itineraries",
-  ],
-  expectations: [
-    "Shared road expenses (fuel, modest stops, split costs)",
-    "Independent mechanical readiness for your own machine",
-    "Pure non-commercial travel with fellow wanderers",
-  ],
-  isOpenForInterest: true,
-  isStructuralPlaceholder: true,
-};
+// Publish a trip here only after its route and timing have been confirmed.
+export const upcomingDrift: DriftTrip | null = null;

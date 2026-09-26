@@ -22,7 +22,6 @@ interface EditorialImageProps {
   className?: string;
   sizes?: string;
   fill?: boolean;
-  isProvisional?: boolean;
 }
 
 const aspectRatios: Record<AspectRatioType, string> = {
@@ -44,19 +43,18 @@ export function EditorialImage({
   date,
   className = "",
   sizes = "(max-width: 768px) 100vw, (max-width: 1200px) 85vw, 1400px",
-  isProvisional,
 }: EditorialImageProps) {
   const [hasError, setHasError] = useState(!src);
 
   const ratioClass = aspectRatios[aspectRatio] || "aspect-[16/10]";
-  const showProvisionalNotice = isProvisional || (src && src.includes("placeholders"));
+  const showGeneratedAssetNotice = Boolean(src?.includes("placeholders"));
 
   return (
     <figure className={`group relative w-full ${className}`}>
       <div
         className={`relative w-full overflow-hidden bg-[#141312] border border-[#262421] transition-colors duration-500 ${ratioClass}`}
       >
-        {/* Placeholder RAW Frame: Only displayed if asset fails or is missing */}
+        {/* An editorial fallback appears only if the image cannot load. */}
         {hasError ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-[#161513] to-[#0e0d0c] select-none">
             {/* Photographic crosshair indicator */}
@@ -75,7 +73,7 @@ export function EditorialImage({
               </span>
             )}
             <span className="text-[9px] uppercase font-mono tracking-wider text-[#47433d] mt-2">
-              [ Awaiting Saraswat Asset ]
+              Image unavailable
             </span>
           </div>
         ) : (
@@ -91,11 +89,11 @@ export function EditorialImage({
                 className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02] opacity-100"
               />
 
-              {/* Discreet editorial placeholder indicator if provisional asset */}
-              {showProvisionalNotice && (
+              {/* Identify illustrative photography until original images are available. */}
+              {showGeneratedAssetNotice && (
                 <div className="absolute bottom-2.5 right-2.5 pointer-events-none z-10">
                   <span className="px-2 py-0.5 text-[9px] font-mono tracking-widest uppercase bg-[#0c0b0a]/80 text-[#9e978c] border border-[#262421] backdrop-blur-xs">
-                    Editorial Placeholder
+                    AI-generated image
                   </span>
                 </div>
               )}

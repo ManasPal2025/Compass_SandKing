@@ -39,6 +39,8 @@ export function ArchiveStream({ items }: ArchiveStreamProps) {
           return (
             <button
               key={cat}
+              type="button"
+              aria-pressed={isActive}
               onClick={() => setActiveCategory(cat)}
               className={`transition-colors py-2.5 px-3 -my-1 cursor-pointer relative select-none rounded-sm shrink-0 active:bg-[#1a1816] ${
                 isActive
@@ -54,6 +56,11 @@ export function ArchiveStream({ items }: ArchiveStreamProps) {
           );
         })}
       </nav>
+
+      <p aria-live="polite" className="-mt-8 text-[10px] font-mono uppercase tracking-[0.16em] text-[#777168]">
+        Showing {filteredItems.length} {filteredItems.length === 1 ? "frame" : "frames"}
+        {activeCategory !== "All" ? ` · ${activeCategory}` : " · All categories"}
+      </p>
 
       {/* Asymmetric Editorial Photographic Grid */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-10 md:gap-14 items-start">
@@ -110,8 +117,7 @@ export function ArchiveStream({ items }: ArchiveStreamProps) {
 
                   <div className="flex items-center gap-3 text-[10px] uppercase tracking-widest text-[#5c574f] shrink-0 pt-1 sm:pt-0">
                     <span className="text-[#8c867c]">{item.category}</span>
-                    <span>·</span>
-                    <span>{item.date}</span>
+                    {item.date && <><span>·</span><time dateTime={item.date}>{item.date}</time></>}
                   </div>
                 </div>
               </Link>

@@ -16,17 +16,8 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Direct channels: Instagram · Email */}
+          {/* Add social links when verified account details are supplied. */}
           <div className="flex items-center gap-6 text-xs font-mono tracking-widest uppercase text-[#857f76]">
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#f5f3ef] transition-colors py-2.5 -my-2.5"
-            >
-              Instagram ↗
-            </a>
-            <span className="text-[#33302b]">·</span>
             <a
               href="mailto:contact@saraswatmishra.com"
               className="hover:text-[#f5f3ef] transition-colors py-2.5 -my-2.5"

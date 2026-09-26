@@ -5,15 +5,34 @@ import { Container, Section } from "@/components/layout/container";
 import { EditorialImage } from "@/components/ui/editorial-image";
 import { FadeIn } from "@/components/layout/fade-in";
 import { siteConfig } from "@/data/navigation";
-import { currentlyData } from "@/data/currently";
 import { journalEntries } from "@/data/journal";
 import { archiveItems } from "@/data/archive";
 import { garageMachines } from "@/data/garage";
-import { upcomingDrift, driftManifesto } from "@/data/drift";
+import { driftManifesto } from "@/data/drift";
+import { lifeInterests } from "@/data/between-roads";
 import { AtmosphereLayer } from "@/components/atmosphere/atmosphere-layer";
+import { JourneyFilm } from "@/components/journey/journey-film";
+import { CinematicFilmPlayer } from "@/components/journey/cinematic-film-player";
+import { SampleContentNotice } from "@/components/ui/sample-content-notice";
+
+const journalPreviewImages = [
+  {
+    src: "/images/placeholders/journal-pass.webp",
+    alt: "Empty mountain road appearing through dawn mist",
+  },
+  {
+    src: "/images/placeholders/archive-ridge.webp",
+    alt: "A narrow ridge track above a sea of clouds",
+  },
+  {
+    src: "/images/placeholders/journal-repair.webp",
+    alt: "Unbranded adventure motorcycle resting after rain",
+  },
+];
 
 export default function HomePage() {
   return (
+    <JourneyFilm>
     <div className="w-full flex flex-col selection:bg-[#2b2723] selection:text-[#f5f3ef]">
       <AtmosphereLayer variant="blossom" />
       {/* =========================================================================
@@ -22,12 +41,12 @@ export default function HomePage() {
           The photograph is clearly visible with natural contrast and highlights.
           Edge falloffs surround and dissolve the photograph without smothering it.
          ========================================================================= */}
-      <section className="relative w-full h-[100svh] min-h-[580px] sm:min-h-[700px] -mt-20 sm:-mt-24 md:-mt-28 overflow-hidden flex flex-col justify-end pb-10 sm:pb-16 md:pb-24">
+      <section id="opening" className="relative w-full h-[100svh] min-h-[580px] sm:min-h-[700px] -mt-20 sm:-mt-24 md:-mt-28 overflow-hidden flex flex-col justify-end pb-10 sm:pb-16 md:pb-24">
         {/* Layer 0: High-Resolution Photographic Scene — Visible, Sharp, Rich */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/placeholders/hero_road.jpg"
-            alt="Cinematic coastal road cutting through morning mist"
+            alt="A winding mountain road emerging through morning mist"
             fill
             priority
             sizes="100vw"
@@ -41,6 +60,10 @@ export default function HomePage() {
 
         {/* Bottom Edge Falloff: Dissolves bottom into Cold Open */}
         <div className="absolute bottom-0 inset-x-0 h-32 sm:h-36 md:h-48 bg-gradient-to-t from-[#0c0b0a] via-[#0c0b0a]/60 to-transparent pointer-events-none z-10" />
+
+        <span className="absolute bottom-4 right-5 z-20 text-[8px] font-mono uppercase tracking-[0.14em] text-white/55 sm:bottom-6 sm:right-8 sm:text-[9px]">
+          AI-generated photo study · not original photography
+        </span>
 
         {/* Layer 2: Scene-Integrated Dominant Typography */}
         <Container size="wide" className="relative z-30">
@@ -60,6 +83,13 @@ export default function HomePage() {
                   </React.Fragment>
                 ))}
               </div>
+
+              <a
+                href="#cold-open"
+                className="mt-4 inline-flex min-h-11 items-center gap-3 text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-[#e2ddd5] hover:text-white transition-colors focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[#c4a482]"
+              >
+                Scroll to explore <span className="text-[#c4a482]" aria-hidden="true">↓</span>
+              </a>
             </div>
           </FadeIn>
         </Container>
@@ -70,7 +100,7 @@ export default function HomePage() {
           A thought encountered in negative space.
           Strong visual statement, generous whitespace, reduced emptiness.
          ========================================================================= */}
-      <Section spacing="default" className="bg-[#0c0b0a]">
+      <Section id="cold-open" spacing="default">
         <Container size="narrow">
           <FadeIn>
             <div className="space-y-6 sm:space-y-8 py-4 sm:py-6 md:py-12">
@@ -79,11 +109,11 @@ export default function HomePage() {
               </span>
 
               <div className="space-y-4 sm:space-y-6 max-w-3xl">
-                <p className="text-3xl sm:text-5xl md:text-7xl font-serif text-[#FAF9F6] font-normal leading-[1.15] tracking-tight">
+                <h2 className="text-3xl sm:text-5xl md:text-7xl font-serif text-[#FAF9F6] font-normal leading-[1.15] tracking-tight">
                   Some people collect things.
                   <br />
                   <span className="text-[#c4a482] italic font-normal">Others collect roads.</span>
-                </p>
+                </h2>
 
                 <p className="text-base sm:text-lg font-light text-[#A8A195] leading-relaxed max-w-xl font-sans">
                   Machines. Solitary dawns. Mechanical pauses. Unplanned turns. 
@@ -93,7 +123,7 @@ export default function HomePage() {
 
               <div className="pt-4 border-t border-[#1a1917]">
                 <span className="text-[9px] font-mono uppercase tracking-widest text-[#524d45] block">
-                  [ Structural Editorial Open — Awaiting Saraswat&apos;s Voice ]
+                  The best part is often the unplanned pause.
                 </span>
               </div>
             </div>
@@ -101,72 +131,14 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* =========================================================================
-          03 — CURRENTLY
-          Personal status note, NOT a software dashboard.
-          A clean, understated editorial snapshot of Saraswat's current world.
-         ========================================================================= */}
-      <Section spacing="sm" className="border-t border-[#1a1917] bg-[#0c0b0a]">
-        <Container>
-          <FadeIn>
-            <div className="py-6 sm:py-8 border-y border-[#1c1a18] flex flex-col lg:flex-row lg:items-baseline justify-between gap-6 sm:gap-8">
-              <div className="shrink-0">
-                <span className="text-xs font-mono tracking-[0.25em] uppercase text-[#c4a482] font-medium block">
-                  CURRENTLY
-                </span>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-[#635f58] block mt-0.5">
-                  {currentlyData.lastUpdated}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-10 flex-1 max-w-4xl">
-                <div className="space-y-1">
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-[#736e65] block">
-                    Location
-                  </span>
-                  <p className="text-sm md:text-base font-serif text-[#FAF9F6]">
-                    {currentlyData.location}
-                  </p>
-                </div>
-
-                <div className="space-y-1">
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-[#736e65] block">
-                    Machine
-                  </span>
-                  <p className="text-sm md:text-base font-serif text-[#FAF9F6]">
-                    {currentlyData.currentMachine}
-                  </p>
-                </div>
-
-                <div className="space-y-1">
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-[#736e65] block">
-                    Obsession
-                  </span>
-                  <p className="text-sm md:text-base font-serif text-[#FAF9F6]">
-                    {currentlyData.obsession}
-                  </p>
-                </div>
-
-                <div className="space-y-1">
-                  <span className="text-[10px] font-mono tracking-widest uppercase text-[#736e65] block">
-                    Next
-                  </span>
-                  <p className="text-sm md:text-base font-serif text-[#FAF9F6]">
-                    {currentlyData.nextDestination}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-        </Container>
-      </Section>
+      <CinematicFilmPlayer />
 
       {/* =========================================================================
           04 — JOURNAL TEASER
           The heartbeat of the site. Personal notebook rhythm.
           Increased typography contrast, authentic readability.
          ========================================================================= */}
-      <Section spacing="default" className="border-t border-[#1a1917]">
+      <Section id="journal" spacing="default" className="border-t border-[#1a1917]">
         <Container>
           <FadeIn>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-16 border-b border-[#201e1b] pb-6 sm:pb-8">
@@ -189,25 +161,37 @@ export default function HomePage() {
 
             {/* Editorial notebook entries */}
             <div className="divide-y divide-[#1c1a18]">
-              {journalEntries.slice(0, 3).map((entry) => (
+              {journalEntries.slice(0, 3).map((entry, index) => (
                 <article
                   key={entry.id}
-                  className="group py-10 md:py-14 grid grid-cols-1 md:grid-cols-12 gap-6 items-baseline transition-colors"
+                  className="group py-10 md:py-14 grid grid-cols-1 md:grid-cols-12 gap-6 items-start transition-colors"
                 >
-                  <div className="md:col-span-4 space-y-1">
-                    <time
-                      dateTime={entry.date}
-                      className="text-sm font-mono text-[#999388] block tracking-wider"
-                    >
-                      {entry.date}
-                    </time>
+                  <div className="md:col-span-2 space-y-1">
+                    {entry.date && (
+                      <time
+                        dateTime={entry.date}
+                        className="text-sm font-mono text-[#999388] block tracking-wider"
+                      >
+                        {entry.date}
+                      </time>
+                    )}
                     <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-[#666159]">
                       <span>{entry.type}</span>
                       {entry.location && <span>· {entry.location}</span>}
                     </div>
                   </div>
 
-                  <div className="md:col-span-7 space-y-3">
+                  <div className="md:col-span-3">
+                    <EditorialImage
+                      src={journalPreviewImages[index].src}
+                      alt={journalPreviewImages[index].alt}
+                      aspectRatio="landscape"
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                      caption="AI-generated photo study · not original photography."
+                    />
+                  </div>
+
+                  <div className="md:col-span-6 space-y-3">
                     <h3 className="text-2xl sm:text-3xl font-serif text-[#FAF9F6] group-hover:text-[#c4a482] transition-colors">
                       <Link href={`/journal/${entry.slug}`}>{entry.title}</Link>
                     </h3>
@@ -237,7 +221,7 @@ export default function HomePage() {
           Asymmetric editorial image composition.
           Large imagery, rich highlights, photographic depth, clearly visible.
          ========================================================================= */}
-      <Section id="archive" spacing="lg" className="border-t border-[#1a1917] bg-[#0a0a09]">
+      <Section id="archive" spacing="lg" className="border-t border-[#1a1917]">
         <Container size="wide">
           <FadeIn>
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-16 border-b border-[#201e1b] pb-6 sm:pb-8">
@@ -246,7 +230,7 @@ export default function HomePage() {
                   05 / VISUAL MEMORY
                 </span>
                 <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif text-[#FAF9F6] tracking-tight">
-                  Archive
+                  Atlas
                 </h2>
               </div>
               <Link
@@ -351,6 +335,13 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+
+            <div className="mt-10 flex flex-col gap-4 border-t border-[#201e1b] pt-6 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm text-[#a8a195]">Follow a place through its photographs—or try to recognize it from one frame.</p>
+              <Link href="/archive#photo-guessing-game" className="inline-flex min-h-11 items-center gap-2 text-[10px] font-mono uppercase tracking-[0.18em] text-[#c4a482] hover:text-[#f5f3ef]">
+                Play Where in the World? <span aria-hidden="true">→</span>
+              </Link>
+            </div>
           </FadeIn>
         </Container>
       </Section>
@@ -366,17 +357,17 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 sm:mb-16 border-b border-[#201e1b] pb-6 sm:pb-8">
               <div className="space-y-2">
                 <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[#736e65] block">
-                  06 / THE MACHINES
+                  06 / MACHINES & GEAR
                 </span>
                 <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif text-[#FAF9F6] tracking-tight">
-                  Garage
+                  Machines
                 </h2>
               </div>
               <Link
                 href="/garage"
                 className="group flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#aba59c] hover:text-[#FAF9F6] transition-colors py-1"
               >
-                <span>View all companions</span>
+                <span>Explore the collection</span>
                 <span className="text-[#c4a482] group-hover:translate-x-1 transition-transform">→</span>
               </Link>
             </div>
@@ -387,7 +378,7 @@ export default function HomePage() {
                 <article key={machine.id} className="space-y-4 sm:space-y-6 group">
                   <EditorialImage
                     src={machine.heroImage.src}
-                    alt={`${machine.name} — ${machine.model}`}
+                    alt={machine.heroImage.alt}
                     aspectRatio="landscape"
                     caption={machine.heroImage.caption}
                   />
@@ -423,57 +414,81 @@ export default function HomePage() {
         </Container>
       </Section>
 
+      <Section id="between-roads" spacing="default" className="border-t border-[#1a1917]">
+        <Container size="wide">
+          <FadeIn>
+            <div className="mb-10 flex flex-col gap-4 border-b border-[#201e1b] pb-6 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <span className="block text-[10px] font-mono uppercase tracking-[0.25em] text-[#c4a482]">07 / LIFE BETWEEN JOURNEYS</span>
+                <h2 className="mt-2 font-serif text-3xl tracking-tight text-[#f5f3ef] sm:text-5xl">Between Roads</h2>
+              </div>
+              <Link href="/between-roads" className="group inline-flex min-h-11 items-center gap-2 text-xs font-mono uppercase tracking-[0.16em] text-[#aaa398] hover:text-white">
+                <span>Explore what grounds him</span><span aria-hidden="true" className="text-[#c4a482] transition-transform group-hover:translate-x-1">→</span>
+              </Link>
+            </div>
+            <SampleContentNotice className="mb-8 max-w-3xl" />
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8">
+              {lifeInterests.slice(0, 3).map((interest) => (
+                <Link href="/between-roads" key={interest.id} className="group block focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-[#c4a482]">
+                  <div className="relative mb-4 aspect-[16/10] overflow-hidden border border-white/10 bg-[#141210]">
+                    <Image src={interest.image} alt={interest.alt} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                    <span className="absolute bottom-2 right-2 bg-black/75 px-2 py-1 text-[9px] font-mono uppercase tracking-wider text-white/75">Sample image</span>
+                  </div>
+                  <span className="text-[9px] font-mono uppercase tracking-[0.16em] text-[#c4a482]">{interest.theme}</span>
+                  <h3 className="mt-1 font-serif text-xl text-[#f5f3ef] group-hover:text-[#d0b18f]">{interest.title}</h3>
+                </Link>
+              ))}
+            </div>
+          </FadeIn>
+        </Container>
+      </Section>
+
       {/* =========================================================================
-          07 — DRIFT TEASER (PERSONAL INVITATION)
+                  08 — DRIFT TEASER (PERSONAL INVITATION)
           NOT an event promo or booking product.
           An open door: Saraswat is heading out. Like-minded people can ask to join.
          ========================================================================= */}
-      <Section id="drift" spacing="default" className="border-t border-[#1a1917] bg-[#0c0b0a]">
-        <Container size="narrow">
+      <Section id="drift" spacing="default" className="border-t border-[#1a1917]">
+        <Container size="wide">
           <FadeIn>
-            <div className="space-y-8 sm:space-y-10 py-4 sm:py-6 md:py-12">
-              {/* Intimate manifesto statement */}
-              <div className="space-y-3 sm:space-y-4">
-                <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[#c4a482] block">
-                  07 / DRIFT · AN INVITATION
-                </span>
-                <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-[#FAF9F6] leading-[1.2] tracking-tight">
-                  &ldquo;{driftManifesto.tagline}&rdquo;
-                </h2>
-                <p className="text-base text-[#A8A195] font-light leading-relaxed max-w-xl">
-                  Drift is entirely non-commercial. Saraswat charts journeys for himself. 
-                  When an upcoming route has an open passenger seat or space in the riding convoy, 
-                  fellow wanderers can ask to come along.
-                </p>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center py-4 sm:py-6 md:py-12">
+              <div className="md:col-span-5">
+                <EditorialImage
+                  src="/images/placeholders/drift-road.webp"
+                  alt="A sunlit road winding through dry open hills"
+                  aspectRatio="landscape"
+                  sizes="(max-width: 768px) 100vw, 42vw"
+                  caption="AI-generated photo study · not original photography."
+                />
               </div>
 
-              {/* Quiet upcoming route note */}
-              {upcomingDrift && (
-                <div className="py-6 border-y border-[#1c1a18] flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
-                  <div className="space-y-1">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#736e65] block">
-                      Next Planned Route
-                    </span>
-                    <h3 className="text-xl md:text-2xl font-serif text-[#FAF9F6]">
-                      {upcomingDrift.destination}
-                    </h3>
-                    <p className="text-xs font-mono text-[#736e65]">
-                      {upcomingDrift.dates}
-                    </p>
-                  </div>
-
-                  <Link
-                    href="/drift"
-                    className="inline-block text-xs font-mono uppercase tracking-[0.25em] text-[#c4a482] hover:text-[#FAF9F6] transition-colors pt-2 sm:pt-0"
-                  >
-                    I&apos;m Interested →
-                  </Link>
+              <div className="md:col-span-7 space-y-8 sm:space-y-10">
+                {/* Intimate manifesto statement */}
+                <div className="space-y-3 sm:space-y-4">
+                  <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[#c4a482] block">
+                    08 / DRIFT · AN INVITATION
+                  </span>
+                  <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif text-[#FAF9F6] leading-[1.2] tracking-tight">
+                    &ldquo;{driftManifesto.tagline}&rdquo;
+                  </h2>
+                  <p className="text-base text-[#A8A195] font-light leading-relaxed max-w-xl">
+                    Drift is non-commercial: an invitation to share a stretch of road when the
+                    route, timing, and company align.
+                  </p>
                 </div>
-              )}
+
+                <Link
+                  href="/drift"
+                  className="inline-flex min-h-11 items-center text-xs font-mono uppercase tracking-[0.25em] text-[#c4a482] hover:text-[#FAF9F6] transition-colors"
+                >
+                  Explore Drift →
+                </Link>
+              </div>
             </div>
           </FadeIn>
         </Container>
       </Section>
     </div>
+    </JourneyFilm>
   );
 }

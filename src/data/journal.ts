@@ -1,146 +1,115 @@
 import { JournalEntry } from "@/types";
 
-/**
- * COMPASS — JOURNAL DATA ARCHITECTURE
- * 
- * STRUCTURAL PLACEHOLDERS ONLY
- * All entries flagged with isStructuralPlaceholder: true.
- * Real entries will be provided by Saraswat in his authentic voice.
- * Zero fabricated travel experiences, fake personal history, or invented facts.
- * 
- * Supports:
- * - Varied editorial rhythm (prominent, compact, featured, fragment)
- * - Single photograph entries
- * - Multi-photograph entries
- * - Typography-only entries (no image)
- * - Multi-paragraph long-form reflections
- */
+/** COMPASS journal: evergreen road and travel reflections, without invented trip details. */
 export const journalEntries: JournalEntry[] = [
   {
     id: "journal-01",
     slug: "road-note-01",
     title: "Before the Road Wakes",
-    date: "Provisional Date",
-    location: "Mountain Pass · Shoulder",
     type: "road-note",
-    excerpt: "The cold air off the ridge before morning traffic begins. A stillness that only exists when engines are cold.",
-    content: "Structural placeholder for Saraswat's authentic road note. When his actual writing is provided, this will contain his unedited observations from the saddle or the passenger seat.",
+    excerpt: "Before the first traffic, a road offers a rare kind of quiet: enough room to notice the light, the line, and the pace.",
+    content: "The hour before sunrise is all edges and quiet: a pale horizon, a road still cool from the night, the first bend waiting without instruction.",
     bodyParagraphs: [
-      "There is a particular kind of stillness that exists only at high elevation in the hour before the first transport trucks begin their haul. The asphalt is still damp with night mist, and every mechanical click of cooling metal resonates with crisp clarity.",
-      "No itinerary, no mileage targets to prove to anyone. Just the immediate geometry of the upcoming corner, the clean line of the tarmac, and the rhythm of the road.",
-      "Structural note: This placeholder demonstrates how Saraswat's genuine multi-paragraph travel observations and roadside reflections will render with print-like typography."
+      "Nothing asks to be hurried. Without traffic or a schedule to chase, small details return: the texture beneath a tyre, the change in the air, the widening strip of light.",
+      "Then the day begins. The road remains, asking only for attention, one turn at a time."
     ],
     image: {
-      src: "/images/placeholders/hero_road.jpg",
-      alt: "Curving mountain road through mist — provisional placeholder",
-      caption: "Provisional visual asset — awaiting Saraswat's authentic road photography.",
+      src: "/images/placeholders/journal-pass.webp",
+      alt: "An empty mountain road appearing through dawn mist",
+      caption: "AI-generated photo study · not original photography.",
       aspectRatio: "landscape",
     },
     tags: ["Dispatch", "Solitude", "Highland"],
-    readingTime: "2 min read",
+    readingTime: "1 min read",
     layoutVariant: "prominent",
-    isStructuralPlaceholder: true,
   },
   {
     id: "journal-02",
     slug: "road-note-02",
-    title: "The 40-Kilometer Silence",
-    date: "Provisional Date",
-    location: "Paved Byway",
+    title: "The Space Between Turns",
     type: "observation",
-    excerpt: "When the helmet visor clicks shut and the internal dialogue finally slows down to match the speed of the landscape.",
-    content: "Structural placeholder for a quiet observation on solitude, movement, and mental clarity on the open highway.",
+    excerpt: "A clear stretch of road can loosen the mind’s grip on everything waiting beyond it.",
+    content: "Quiet is not empty. It gives the mind a little distance from its own urgency.",
     bodyParagraphs: [
-      "Forty kilometers of steady tarmac without a junction or a traffic signal has an interesting way of resetting thoughts. The digital noise of everyday routine dissolves into the background hum of the tires.",
-      "You stop calculating where you need to be by evening and simply notice the shift from pine scent to damp earth as the elevation drops.",
-      "Structural note: Demonstrates purely typographic editorial layout with no accompanying photography. Confirms the journal remains beautiful and readable in pure prose."
+      "With the visor closed, attention settles on a few honest things: a clean line, changing light, the steady hum beneath you.",
+      "There is no need to make a lesson of it. Sometimes a little open road is enough to let a thought arrive, and then let it pass.",
+      "The next turn will come when it comes."
     ],
     tags: ["Observation", "Solitude"],
     readingTime: "1 min read",
     layoutVariant: "compact",
-    isStructuralPlaceholder: true,
   },
   {
     id: "journal-03",
     slug: "road-note-03",
-    title: "Field Repair on a Rainy Afternoon",
-    date: "Provisional Date",
-    location: "Workshop Shed",
+    title: "The Patience of a Small Repair",
     type: "mechanical",
-    excerpt: "Mechanical pauses are not interruptions to the journey; they are simply where the machine demands its share of attention.",
-    content: "Structural placeholder for a mechanical incident, roadside fix, or unhurried workshop maintenance note.",
+    excerpt: "A mechanical pause is part of the journey: a moment to look closely, work carefully, and find a steadier pace.",
+    content: "A small repair slows the day down to the scale of a fastener, a tool, and a careful look.",
     bodyParagraphs: [
-      "A loose fastener or a weeping gasket at mile marker 180 is not a catastrophe unless you are in a hurry. Unfolding the canvas tool roll on dry grass and taking thirty unhurried minutes to diagnose the issue is often where the real memory of the trip begins.",
-      "Machines have their own language. If you pay attention, they tell you what is wearing out miles before it actually gives way.",
-      "Structural note: Demonstrates dual-photograph support in journal entries, showing how mechanical lore, workshop notes, and gear documentation fit harmoniously into the narrative."
+      "It rewards patience before speed. A familiar machine is easier to understand when its ordinary sounds and habits are known.",
+      "Check the simple things, work methodically, and leave enough time to do the job properly. The pause becomes part of the journey, not a break from it."
     ],
     image: {
-      src: "/images/placeholders/garage_bike.jpg",
-      alt: "Adventure motorcycle parked on high mountain pass — provisional placeholder",
-      caption: "Provisional visual asset 01 — long-range machine.",
+      src: "/images/placeholders/journal-repair.webp",
+      alt: "An unbranded adventure motorcycle resting after rain",
+      caption: "AI-generated photo study · not original photography.",
       aspectRatio: "landscape",
     },
     images: [
       {
         src: "/images/placeholders/garage_bike.jpg",
-        alt: "Adventure motorcycle parked on high mountain pass — provisional placeholder",
-        caption: "Provisional visual asset 01 — field service on the pass.",
+        alt: "Close view of an adventure motorcycle after rainfall",
+        caption: "AI-generated photo study · not original photography.",
         aspectRatio: "landscape",
       },
       {
         src: "/images/placeholders/garage_rig.jpg",
-        alt: "Overland rig in misty forest — provisional placeholder",
-        caption: "Provisional visual asset 02 — recovery gear and tools.",
+        alt: "A four-wheel travel vehicle beneath a misty forest canopy",
+        caption: "AI-generated photo study · not original photography.",
         aspectRatio: "landscape",
       }
     ],
     tags: ["Wrenching", "Patience", "Machines"],
-    readingTime: "3 min read",
+    readingTime: "1 min read",
     layoutVariant: "featured",
-    isStructuralPlaceholder: true,
   },
   {
     id: "journal-04",
     slug: "road-note-04",
     title: "On Stepping Away from the Routine",
-    date: "Provisional Date",
-    location: "Edge of Nowhere",
     type: "thought",
-    excerpt: "Nobody ever remembered the year they stayed at their desk and answered every single message on time.",
-    content: "A short reflective fragment on freedom, slowing down, self-love, and unhurried wandering.",
+    excerpt: "A change of pace can begin with one unplanned turn.",
+    content: "A little distance from routine can make room for a clearer view of it.",
     bodyParagraphs: [
-      "Nobody ever looks back on a year and feels proud of answering emails twenty seconds faster. The days that actually stick in your memory are the ones where you took the left fork simply because you didn't know what was at the end of it.",
-      "Stepping away is not escapism. It is basic maintenance of your relationship with the living world.",
-      "Structural note: Minimalist note fragment emphasizing typographic weight and quiet white space."
+      "The calendar fills itself. A day outside it asks for something else: enough time to turn aside, stop for a view, and keep the route loose.",
+      "Stepping away is not an escape from everyday life. It is a way to meet it again with a little more room to think.",
+      "One unplanned turn can be plenty."
     ],
     tags: ["Reflection", "Freedom", "Life"],
     readingTime: "1 min read",
     layoutVariant: "fragment",
-    isStructuralPlaceholder: true,
   },
   {
     id: "journal-05",
     slug: "road-note-05",
-    title: "The Smell of Wet Pine and Low Fog",
-    date: "Provisional Date",
-    location: "Highland Forest",
+    title: "Where the Fog Settles",
     type: "dispatch",
-    excerpt: "A short dispatch from a gravel pull-off where timber meets the low-hanging cloud bank.",
-    content: "Structural placeholder for atmospheric field dispatches written immediately after shutting off the engine.",
+    excerpt: "Fog softens the forest until the road appears only as far as the light allows.",
+    content: "Weather has its own pace among the pines. A quiet moment is enough to notice it.",
     bodyParagraphs: [
-      "The gravel crunches under boots, and the only sound left is water droplets falling from needle to needle onto the moss below.",
-      "You don't need a destination when the air feels like this. Five minutes sitting on the log with a warm cup of coffee is worth twelve hours of driving.",
-      "Structural note: Demonstrates atmospheric visual pairing with single landscape editorial image."
+      "Fog changes a familiar shape into a suggestion. The trees thin, the edges soften, and the road appears only as far as the light allows.",
+      "Water gathers on needles, sinks into the ground, and disappears into the next breath of cloud.",
+      "There is no need to make a moment larger than it is. Notice it, let it pass, keep moving when ready."
     ],
     image: {
       src: "/images/placeholders/archive_trail.jpg",
-      alt: "Misty pine forest trail — provisional placeholder",
-      caption: "Provisional visual asset — quiet trail through pine mist.",
+      alt: "A narrow trail fading into a misty pine forest",
+      caption: "AI-generated photo study · not original photography.",
       aspectRatio: "landscape",
     },
     tags: ["Dispatch", "Nature", "Atmosphere"],
-    readingTime: "2 min read",
+    readingTime: "1 min read",
     layoutVariant: "prominent",
-    isStructuralPlaceholder: true,
   }
 ];

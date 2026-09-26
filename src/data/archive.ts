@@ -3,13 +3,10 @@ import { ArchiveItem } from "@/types";
 /**
  * COMPASS — ARCHIVE DATA ARCHITECTURE
  * 
- * STRUCTURAL PLACEHOLDERS ONLY
- * All entries flagged with isStructuralPlaceholder: true.
- * Awaiting Saraswat's authentic photography archive.
- * Real image assets will be dropped into /public/images/archive/
+ * Illustrative image studies paired with evergreen scene notes.
  * 
  * Strict Authenticity:
- * Zero fabricated locations, dates, or personal claims attached to provisional assets.
+ * Exact places and dates are omitted until verified details are available.
  * 
  * Supports:
  * - Asymmetric editorial visual grid
@@ -23,144 +20,129 @@ export const archiveItems: ArchiveItem[] = [
     slug: "frame-01",
     title: "Coastal Ridge Pass",
     category: "Roads",
-    date: "Provisional Archive",
-    location: "Location Pending",
+    location: "Coastal road",
     image: {
       src: "/images/placeholders/hero_road.jpg",
       alt: "Empty winding asphalt road cutting through misty hills at dawn",
-      caption: "Provisional visual asset — awaiting Saraswat's authentic photography archive.",
+      caption: "AI-generated photo study · not original photography.",
       aspectRatio: "landscape",
     },
-    note: "Curving coastal blacktop holding the mountain line before the morning fog clears.",
+    note: "A road between high ground and open water, softened by low cloud.",
     storyParagraphs: [
-      "The mist held to the valley floor for forty minutes before the crosswinds from the inlet began to disperse it. Tarmac still damp from early sea spray.",
-      "A quiet section of asphalt where the mountain meets the coastal cliffside. No traffic, only the steady rhythm of turns and changing grade.",
-      "Structural note: This provisional record demonstrates the primary single-photo editorial layout."
+      "The road follows the edge of the land, bending in and out of the mist. Sea, hillside, and asphalt share the frame without asking for a fixed destination.",
+      "Some landscapes are best read slowly: one curve, one opening in the cloud, one view that disappears as quickly as it arrived."
     ],
     relatedJournalSlug: "road-note-01",
     relatedJournalTitle: "Before the Road Wakes",
     gridSpan: "wide",
-    isStructuralPlaceholder: true,
   },
   {
     id: "arch-02",
     slug: "frame-02",
     title: "Forest Single Track",
     category: "Nature",
-    date: "Provisional Archive",
-    location: "Location Pending",
+    location: "Pine forest",
     image: {
       src: "/images/placeholders/archive_trail.jpg",
       alt: "Unpaved forest track through tall pine trees in morning mist",
-      caption: "Provisional visual asset — awaiting Saraswat's authentic photography archive.",
+      caption: "AI-generated photo study · not original photography.",
       aspectRatio: "square",
     },
-    note: "Unpaved forest track through tall pine timber in morning mist.",
+    note: "A narrow trail disappears into tall pines and morning mist.",
     storyParagraphs: [
-      "High timber corridors where the road narrows to a single vehicle width. The soil retains the smell of pine bark and morning moisture.",
-      "A quiet pause in dense woods where the only motion is moisture dripping from the pine canopy onto the soil.",
-      "Structural note: Demonstrates square/portrait crop presentation in the editorial archive."
+      "The trees draw the eye forward until the path becomes a thin line in the haze. Light reaches the ground in fragments, changing with every step.",
+      "A forest asks for a different pace. The distance matters less than what comes into view along the way."
     ],
     relatedJournalSlug: "road-note-05",
     relatedJournalTitle: "The Smell of Wet Pine and Low Fog",
     gridSpan: "regular",
-    isStructuralPlaceholder: true,
   },
   {
     id: "arch-03",
     slug: "frame-03",
     title: "Mountain Saddle",
     category: "Machines",
-    date: "Provisional Archive",
-    location: "Location Pending",
+    location: "Mountain pass",
     image: {
       src: "/images/placeholders/garage_bike.jpg",
       alt: "Adventure motorcycle parked on a gravel mountain ridge overlook",
-      caption: "Provisional visual asset — awaiting Saraswat's authentic photography archive.",
+      caption: "AI-generated photo study · not original photography.",
       aspectRatio: "landscape",
     },
-    note: "Long-range companion paused on a high pass gravel overlook.",
+    note: "A machine at rest, held against the scale of the mountains.",
     storyParagraphs: [
-      "Heat radiating from the engine headers into the thin alpine air. A quick breather while checking tire pressures on the loose gravel descent.",
-      "Structural note: Demonstrates a photo-series story with supporting sequence imagery below the narrative."
+      "Metal, stone, weather, and distance share a quiet frame. The motorcycle gives the landscape a human scale without taking it over.",
+      "On a mountain road, even a pause feels like part of the route. The view opens; the next bend can wait."
     ],
     gallery: [
       {
         src: "/images/placeholders/hero_road.jpg",
         alt: "The winding approach road viewed from above",
-        caption: "Series frame 02 — The switchback climb leading up to the ridge.",
+        caption: "An illustrative view of a road climbing through the highlands.",
         aspectRatio: "landscape",
       },
     ],
     relatedJournalSlug: "road-note-03",
     relatedJournalTitle: "Field Repair on a Rainy Afternoon",
     gridSpan: "regular",
-    isStructuralPlaceholder: true,
   },
   {
     id: "arch-04",
     slug: "frame-04",
     title: "Woods Clearing",
     category: "Places",
-    date: "Provisional Archive",
-    location: "Location Pending",
+    location: "Forest clearing",
     image: {
       src: "/images/placeholders/garage_rig.jpg",
       alt: "Overland vehicle in foggy damp woods at first light",
-      caption: "Provisional visual asset — awaiting Saraswat's authentic photography archive.",
+      caption: "AI-generated photo study · not original photography.",
       aspectRatio: "landscape",
     },
-    note: "Overland rig in foggy damp woods at first light.",
+    note: "A vehicle in the trees; the space around it feels still and unhurried.",
     storyParagraphs: [
-      "Tailgate down, camp kettle heating over the single burner. Silence broken only by distant wind through the canopy.",
-      "Remote woodland pull-off reached after dusk, documented at the first break of daylight through the pine trees.",
-      "Structural note: Demonstrates place and setting documentation."
+      "The forest closes in around the clearing, then gives the eye a little room. A vehicle is one small part of a much larger landscape.",
+      "Here the frame is about shelter and space: the pause between leaving the road and deciding where to go next."
     ],
     gridSpan: "regular",
-    isStructuralPlaceholder: true,
   },
   {
     id: "arch-05",
     slug: "frame-05",
     title: "The Fog Line",
     category: "Moments",
-    date: "Provisional Archive",
-    location: "Location Pending",
+    location: "Low cloud",
     image: {
       src: "/images/placeholders/archive_trail.jpg",
       alt: "A split-second moment where cloud cover meets the forest edge",
-      caption: "Provisional visual asset — transitory atmosphere.",
+      caption: "AI-generated photo study · not original photography.",
       aspectRatio: "wide",
     },
-    note: "A brief pause where the trees give way to low cloud.",
+    note: "A brief opening where the trees give way to cloud.",
     storyParagraphs: [
-      "A transitory weather window where the cloud ceiling dropped below the tree line for twenty minutes before lifting back into the upper peaks.",
-      "Photographs kept not for technical perfection, but for the memory of what the air felt like at that exact turn."
+      "Fog turns familiar shapes into silhouettes and makes the distance feel close. The forest seems to end, then begins again a few metres later.",
+      "The moment does not need a name or a map pin. Its value is in the atmosphere that the image manages to keep."
     ],
     gridSpan: "wide",
-    isStructuralPlaceholder: true,
   },
   {
     id: "arch-06",
     slug: "frame-06",
     title: "Pass Summit Approach",
     category: "Roads",
-    date: "Provisional Archive",
-    location: "Location Pending",
+    location: "Highland road",
     image: {
       src: "/images/placeholders/hero_road.jpg",
       alt: "Road surface and shoulder gradient approaching the mountain summit",
-      caption: "Provisional visual asset — pavement texture and road geometry.",
+      caption: "AI-generated photo study · not original photography.",
       aspectRatio: "landscape",
     },
-    note: "The final switchback before the descent begins.",
+    note: "A road's rhythm is written in its turns, not only in its distance.",
     storyParagraphs: [
-      "The asphalt texture changes as the elevation climbs above the tree line. Rougher aggregate, sharper curves, and colder winds.",
-      "Documenting the geometries of roads that leave an impression."
+      "The line of a road can make a landscape legible. It leads the eye across the slope, around a bend, and toward the next change in light.",
+      "Roads are practical things, but a good curve has its own quiet geometry."
     ],
     relatedJournalSlug: "road-note-02",
     relatedJournalTitle: "The 40-Kilometer Silence",
     gridSpan: "regular",
-    isStructuralPlaceholder: true,
   },
 ];

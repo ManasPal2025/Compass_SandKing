@@ -10,7 +10,8 @@ export const siteConfig = {
 
 export const mainNavItems: NavItem[] = [
   { label: "JOURNAL", href: "/journal" },
-  { label: "ARCHIVE", href: "/archive" },
-  { label: "GARAGE", href: "/garage" },
+  { label: "ATLAS", href: "/archive" },
+  { label: "MACHINES", href: "/garage" },
+  { label: "BETWEEN ROADS", href: "/between-roads" },
   { label: "DRIFT", href: "/drift" },
 ];

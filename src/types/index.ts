@@ -11,7 +11,7 @@ export interface CurrentlyStatus {
   currentMachine: string;
   obsession: string;
   nextDestination: string;
-  lastUpdated: string;
+  subtitle: string;
 }
 
 export type JournalEntryType = 
@@ -32,7 +32,7 @@ export interface JournalEntry {
   id: string;
   slug: string;
   title: string;
-  date: string;
+  date?: string;
   location?: string;
   type: JournalEntryType;
   excerpt?: string;
@@ -43,7 +43,6 @@ export interface JournalEntry {
   tags?: string[];
   readingTime?: string;
   layoutVariant?: 'prominent' | 'compact' | 'featured' | 'fragment';
-  isStructuralPlaceholder?: boolean;
 }
 
 export type ArchiveCategory = 
@@ -65,7 +64,7 @@ export interface ArchiveItem {
   slug: string;
   title: string;
   category: ArchiveCategory;
-  date: string;
+  date?: string;
   location: string;
   coordinates?: string; // Text representation e.g. "19.8135° N, 85.8312° E"
   geo?: ArchiveGeo;     // Extensible foundation for future map layer
@@ -86,18 +85,19 @@ export interface ArchiveItem {
   relatedJournalSlug?: string;
   relatedJournalTitle?: string;
   gridSpan?: 'wide' | 'regular' | 'tall';
-  isStructuralPlaceholder?: boolean;
 }
 
-export type MachineType = 'Motorcycle' | 'Automobile';
+export type MachineType = 'Motorcycle' | 'Automobile' | 'Camera' | 'Drone' | 'Riding gear';
+export type MachineCategory = 'Cars' | 'Motorcycles' | 'Capture' | 'Ride kit';
 
 export interface GarageMachine {
   id: string;
   slug: string;
   name: string;
   type: MachineType;
-  model: string;
-  year: number | string;
+  category: MachineCategory;
+  model?: string;
+  year?: number | string;
   role: string; // e.g. "The Long-Distance Wanderer", "The Midnight Runabout"
   heroImage: {
     src: string;
@@ -105,7 +105,9 @@ export interface GarageMachine {
     caption?: string;
   };
   story: string; // The character lore & why Saraswat loves/rides it ("Story first")
-  status: 'In Active Rotation' | 'In Workshop' | 'Preserved' | 'The Road Ahead';
+  sampleMotto: string;
+  sampleUse: string;
+  contentStatus?: 'sample' | 'verified';
   keyNotes: string[]; // Character observations, e.g. "Never refuses an unknown trail"
   gallery?: Array<{
     src: string;
@@ -118,7 +120,6 @@ export interface GarageMachine {
     range?: string;
     characterTrait?: string;
   };
-  isStructuralPlaceholder?: boolean;
 }
 
 export interface DriftTrip {
@@ -138,7 +139,6 @@ export interface DriftTrip {
     caption?: string;
   };
   isOpenForInterest: boolean;
-  isStructuralPlaceholder?: boolean;
 }
 
 export interface DriftInterestSubmission {

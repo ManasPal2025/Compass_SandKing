@@ -6,6 +6,7 @@ import { Container, Section } from "@/components/layout/container";
 import { FadeIn } from "@/components/layout/fade-in";
 import { EditorialImage } from "@/components/ui/editorial-image";
 import { archiveItems } from "@/data/archive";
+import { SampleContentNotice } from "@/components/ui/sample-content-notice";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -65,6 +66,8 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
             </Link>
           </div>
 
+          <SampleContentNotice className="mb-8 max-w-2xl" />
+
           <article className="space-y-8 sm:space-y-12 md:space-y-16">
             {/* Story Header */}
             <header className="space-y-4 sm:space-y-6 border-b border-[#201e1b] pb-6 sm:pb-8 md:pb-12">
@@ -73,9 +76,11 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
                   <span className="text-[#c4a482]">{item.category}</span>
                   {item.location && <span>· {item.location}</span>}
                 </div>
-                <div>
-                  <time dateTime={item.date}>{item.date}</time>
-                </div>
+                {item.date && (
+                  <div>
+                    <time dateTime={item.date}>{item.date}</time>
+                  </div>
+                )}
               </div>
 
               <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif text-[#FAF9F6] tracking-tight leading-[1.14]">
@@ -171,14 +176,8 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
 
             {/* Footer Metadata */}
             <footer className="pt-6 border-t border-[#1c1a18] flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#5c574f] uppercase tracking-wider">
-              {item.coordinates ? (
-                <div>COORDINATES: {item.coordinates}</div>
-              ) : (
-                <div>RECORD: {item.slug}</div>
-              )}
-              {item.isStructuralPlaceholder && (
-                <div>[PROVISIONAL ASSET · SWAPPABLE WITH AUTHENTIC PHOTOGRAPHY]</div>
-              )}
+              <div>Filed under {item.category}</div>
+              {item.coordinates && <div>Coordinates: {item.coordinates}</div>}
             </footer>
           </article>
 

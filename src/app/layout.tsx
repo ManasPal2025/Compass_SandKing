@@ -41,8 +41,11 @@ export default function RootLayout({
       className={`${instrumentSerif.variable} ${plusJakartaSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#0c0b0a] text-[#f5f3ef] font-sans selection:bg-[#2b2723] selection:text-[#f5f3ef]">
+        <a href="#main-content" className="sr-only fixed left-4 top-4 z-[100] bg-[#f5f3ef] px-4 py-3 text-sm text-[#0c0b0a] focus:not-sr-only focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c4a482]">
+          Skip to content
+        </a>
         <Header />
-        <main className="flex-1 w-full pt-24 md:pt-28 flex flex-col">
+        <main id="main-content" className="flex-1 w-full pt-24 md:pt-28 flex flex-col">
           {children}
         </main>
         <Footer />

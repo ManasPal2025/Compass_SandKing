@@ -6,6 +6,7 @@ import { FadeIn } from "@/components/layout/fade-in";
 import { EditorialImage } from "@/components/ui/editorial-image";
 import { journalEntries } from "@/data/journal";
 import { AtmosphereLayer } from "@/components/atmosphere/atmosphere-layer";
+import { ImmersivePageHero } from "@/components/layout/immersive-page-hero";
 
 export const metadata: Metadata = {
   title: "Journal — Saraswat Mishra",
@@ -19,21 +20,30 @@ export const metadata: Metadata = {
 
 export default function JournalPage() {
   return (
-    <Section spacing="default" className="min-h-screen">
+    <>
       <AtmosphereLayer variant="lightning" />
-      <Container size="default">
+      <ImmersivePageHero
+        kicker="04 / NOTEBOOK & DISPATCHES"
+        title="Journal"
+        description="Roadside observations, mechanical pauses, and small thoughts from the moments when the engine is off."
+        imageSrc="/images/placeholders/journal-pass.webp"
+        imageAlt="An empty mountain road emerging through morning mist"
+        actionLabel="Open the notebook"
+        actionHref="#journal-entries"
+      />
+      <Section id="journal-entries" spacing="default" className="min-h-screen">
+        <Container size="default">
         <FadeIn>
-          {/* Quiet Editorial Header */}
-          <header className="space-y-3 sm:space-y-4 mb-10 sm:mb-16 md:mb-24 border-b border-[#201e1b] pb-8 sm:pb-12 md:pb-16">
-            <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-[#736e65] block">
-              04 / NOTEBOOK &amp; DISPATCHES
+          <header className="mb-8 flex flex-col gap-3 border-b border-[#201e1b] pb-5 sm:mb-10 sm:flex-row sm:items-end sm:justify-between sm:pb-6">
+            <div>
+              <span className="text-[10px] font-mono tracking-[0.25em] uppercase text-[#c4a482] block">
+                FROM THE NOTEBOOK
+              </span>
+              <p className="mt-2 text-sm text-[#9e988e]">A few thoughts, kept in order of their arrival.</p>
+            </div>
+            <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-[#777168]">
+              {journalEntries.length} notes
             </span>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif text-[#FAF9F6] tracking-tight">
-              Journal
-            </h1>
-            <p className="text-base sm:text-lg text-[#A8A195] font-light max-w-2xl leading-relaxed">
-              Not a travel blog or motivational advice. Roadside observations, mechanical pauses, small thoughts, and fragments jotted down when the engine is off.
-            </p>
           </header>
 
           {/* Chronological Stream of Entries with Varied Editorial Rhythm */}
@@ -51,12 +61,14 @@ export default function JournalPage() {
                     >
                       {/* Meta Column */}
                       <div className="md:col-span-3 space-y-1 sm:space-y-2">
-                        <time
-                          dateTime={entry.date}
-                          className="text-xs font-mono text-[#999388] tracking-wider block"
-                        >
-                          {entry.date}
-                        </time>
+                        {entry.date && (
+                          <time
+                            dateTime={entry.date}
+                            className="text-xs font-mono text-[#999388] tracking-wider block"
+                          >
+                            {entry.date}
+                          </time>
+                        )}
                         <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-[#666159]">
                           <span>{entry.type}</span>
                           {entry.location && <span>· {entry.location}</span>}
@@ -115,8 +127,10 @@ export default function JournalPage() {
                           {entry.location && <span>· {entry.location}</span>}
                         </div>
                         <div className="flex items-center gap-4 text-xs font-mono text-[#8a847b]">
-                          <span>{entry.date}</span>
-                          {entry.readingTime && <span>· {entry.readingTime}</span>}
+                          {entry.date && <time dateTime={entry.date}>{entry.date}</time>}
+                          {entry.readingTime && (
+                            <span>{entry.date ? "· " : ""}{entry.readingTime}</span>
+                          )}
                         </div>
                       </div>
 
@@ -160,8 +174,12 @@ export default function JournalPage() {
                     >
                       <div className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-widest text-[#666159] justify-center md:justify-start">
                         <span>{entry.type}</span>
-                        <span>·</span>
-                        <time dateTime={entry.date}>{entry.date}</time>
+                        {entry.date && (
+                          <>
+                            <span>·</span>
+                            <time dateTime={entry.date}>{entry.date}</time>
+                          </>
+                        )}
                       </div>
 
                       <blockquote className="text-xl sm:text-3xl md:text-4xl font-serif text-[#FAF9F6] italic group-hover:text-[#c4a482] transition-colors leading-[1.25]">
@@ -184,8 +202,8 @@ export default function JournalPage() {
                     className="grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline"
                   >
                     <div className="md:col-span-3 text-xs font-mono text-[#736e65] tracking-wider">
-                      <span>{entry.date}</span>
-                      {entry.location && <span className="block text-[11px] text-[#545049]">{entry.location}</span>}
+                      <span className="uppercase">{entry.type}</span>
+                      {entry.date && <time dateTime={entry.date} className="block">{entry.date}</time>}
                     </div>
 
                     <div className="md:col-span-8 space-y-1">
@@ -208,7 +226,8 @@ export default function JournalPage() {
             })}
           </div>
         </FadeIn>
-      </Container>
-    </Section>
+        </Container>
+      </Section>
+    </>
   );
 }

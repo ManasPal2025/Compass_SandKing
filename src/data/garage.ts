@@ -1,65 +1,45 @@
 import { GarageMachine } from "@/types";
 
-/**
- * STRUCTURAL PLACEHOLDERS ONLY
- * Machines will be treated as characters in Saraswat's story once real data is supplied.
- * Zero fabricated vehicle ownership, specifications, or travel stories.
- */
+/** Sample inventory based on Saraswat's supplied list; copy and images are illustrative. */
 export const garageMachines: GarageMachine[] = [
   {
-    id: "machine-01",
-    slug: "machine-01",
-    name: "Machine 01",
-    type: "Motorcycle",
-    model: "Two-Wheeler [Details TBD]",
-    year: "—",
-    role: "Long-Range Companion",
-    heroImage: {
-      src: "/images/placeholders/garage_bike.jpg",
-      alt: "Adventure motorcycle parked on a gravel mountain ridge overlook",
-      caption: "Provisional visual asset — awaiting authentic photography of Saraswat's machine.",
-    },
-    story: "Provisional character lore. When authentic records are provided, this will capture the machine's personality and why it became an essential part of Saraswat's journeys, rather than a list of showroom specifications.",
-    status: "In Active Rotation",
-    keyNotes: [
-      "Character note to be supplied by Saraswat",
-      "Field observation placeholder",
-      "Road lore placeholder",
-    ],
-    specs: {
-      displacement: "—",
-      power: "—",
-      range: "—",
-      characterTrait: "Unfussy, dependable companion",
-    },
-    isStructuralPlaceholder: true,
+    id: "car-mercedes", slug: "mercedes-convertible", name: "Mercedes-Benz Convertible", type: "Automobile", category: "Cars", role: "Open-air miles", heroImage: { src: "/images/placeholders/drift-road.webp", alt: "An illustrative open road at golden hour", caption: "AI-generated landscape study · not a photo of this vehicle." },
+    story: "With the roof folded away, the drive opens to more than the view: changing air, the warmth of the day, and the road's quieter details. It belongs to the kind of journey where arriving is only part of the pleasure.", sampleMotto: "Let the day in.", sampleUse: "For relaxed drives where the landscape is part of the experience.", keyNotes: ["Open-air character", "An unhurried pace", "The road as part of the occasion"],
   },
   {
-    id: "machine-02",
-    slug: "machine-02",
-    name: "Machine 02",
-    type: "Automobile",
-    model: "Four-Wheeler [Details TBD]",
-    year: "—",
-    role: "Overland Rig",
-    heroImage: {
-      src: "/images/placeholders/garage_rig.jpg",
-      alt: "Overland 4x4 vehicle parked in deep foggy pine forest",
-      caption: "Provisional visual asset — awaiting authentic photography of Saraswat's vehicle.",
-    },
-    story: "Provisional character lore. Structural placeholder for Saraswat's four-wheel companion, carrying camp provisions and camera equipment wherever asphalt ends.",
-    status: "In Active Rotation",
-    keyNotes: [
-      "Character note to be supplied by Saraswat",
-      "Field observation placeholder",
-      "Overland note placeholder",
-    ],
-    specs: {
-      displacement: "—",
-      power: "—",
-      range: "—",
-      characterTrait: "Built for self-supported escape",
-    },
-    isStructuralPlaceholder: true,
+    id: "car-defender", slug: "land-rover-defender", name: "Land Rover Defender", type: "Automobile", category: "Cars", role: "Beyond the pavement", heroImage: { src: "/images/placeholders/garage_rig.jpg", alt: "An illustrative overland vehicle in a misty forest", caption: "AI-generated vehicle study · not Saraswat's actual Defender." },
+    story: "Some days ask for a route with fewer promises. The Defender stands for carrying what matters, staying composed when the surface changes, and keeping the next turn open.", sampleMotto: "Keep a way forward.", sampleUse: "For routes that trade smooth tarmac for room to explore.", keyNotes: ["Adaptable spirit", "Room for changing plans", "Model year and specification to be confirmed"],
+  },
+  {
+    id: "car-endeavour", slug: "ford-endeavour", name: "Ford Endeavour", type: "Automobile", category: "Cars", role: "The long way round", heroImage: { src: "/images/placeholders/garage_rig.jpg", alt: "An illustrative vehicle waiting at the edge of a forest", caption: "AI-generated vehicle study · illustrative only." },
+    story: "A long day feels different when there is room for people, provisions, and one more unplanned stop. The Endeavour's sample character is steady and generous, made for journeys that unfold together.", sampleMotto: "Make room for the detour.", sampleUse: "For longer days, shared journeys, and the scenic way around.", keyNotes: ["Generous sense of space", "Steady road-trip character", "Personal memories to be added"],
+  },
+  {
+    id: "car-mahindra-ev", slug: "mahindra-ev", name: "Mahindra EV", type: "Automobile", category: "Cars", role: "A quieter drive", heroImage: { src: "/images/placeholders/archive-ridge.webp", alt: "An illustrative mountain road above a sea of cloud", caption: "AI-generated landscape study · model and vehicle photo to be confirmed." },
+    story: "The quiet of an electric drive changes what comes forward: the texture of the road, the small sounds outside, and the shape of the next pause. It is a modern way to travel with a lighter touch and a little more intention.", sampleMotto: "Travel lightly, listen closely.", sampleUse: "A quieter perspective on everyday journeys and longer escapes.", keyNotes: ["Model intentionally unspecified", "Range and charging details to be confirmed"],
+  },
+  {
+    id: "bike-indian", slug: "indian-motorcycle", name: "Indian Motorcycle", type: "Motorcycle", category: "Motorcycles", role: "The open stretch", heroImage: { src: "/images/placeholders/garage_bike.jpg", alt: "An illustrative motorcycle paused on a high mountain road", caption: "AI-generated motorcycle study · not a confirmed Indian model." },
+    story: "On an open stretch, the rhythm of the engine and the line through each bend begin to set the pace. This profile imagines the Indian as a measured companion: present in the ride, never in a hurry to end it.", sampleMotto: "Stay with the road.", sampleUse: "For unhurried open-road riding and the miles between destinations.", keyNotes: ["Measured, road-led character", "Model and year to be confirmed"],
+  },
+  {
+    id: "bike-gold-wing", slug: "honda-gold-wing", name: "Honda Gold Wing", type: "Motorcycle", category: "Motorcycles", role: "Distance with ease", heroImage: { src: "/images/placeholders/garage_rig.jpg", alt: "An illustrative touring machine at a quiet roadside stop", caption: "AI-generated touring study · exact vehicle not depicted." },
+    story: "The best long-distance machine makes the miles feel generous. There is time for conversation, room to settle into the road, and enough ease on arrival to keep the day going.", sampleMotto: "Go far, arrive present.", sampleUse: "A touring spirit built around distance, comfort, and the next stop.", keyNotes: ["Composed touring character", "Specific model and use to be confirmed"],
+  },
+  {
+    id: "bike-harley", slug: "harley-davidson", name: "Harley-Davidson", type: "Motorcycle", category: "Motorcycles", role: "Ride at your own pace", heroImage: { src: "/images/placeholders/journal-repair.webp", alt: "An illustrative motorcycle resting after a ride", caption: "AI-generated motorcycle study · not Saraswat's actual bike." },
+    story: "Some rides are measured in moments rather than distance: the low cadence of the road, a familiar turn, the pause before heading home. This profile gives the Harley a deliberate, unhurried presence.", sampleMotto: "No need to rush the horizon.", sampleUse: "For the pleasure of a ride taken entirely at its own pace.", keyNotes: ["Deliberate, easygoing character", "Model and year to be confirmed"],
+  },
+  {
+    id: "capture-dslr", slug: "dslr-camera", name: "DSLR Camera", type: "Camera", category: "Capture", role: "Keep the light", heroImage: { src: "/images/placeholders/journal-pass.webp", alt: "An illustrative dawn landscape waiting to be photographed", caption: "AI-generated landscape study · camera model not supplied." },
+    story: "A camera turns a passing scene into a reason to stop. Wait for the light to settle, notice what the road almost hid, and carry that small moment forward in a frame.", sampleMotto: "Look twice before you pass.", sampleUse: "For landscape, machine, and in-between moments on the road.", keyNotes: ["Camera and lens details to be added", "All current photo examples are generated studies"],
+  },
+  {
+    id: "capture-drone", slug: "travel-drones", name: "Travel Drones", type: "Drone", category: "Capture", role: "A wider point of view", heroImage: { src: "/images/placeholders/archive-ridge.webp", alt: "An illustrative aerial view over a cloud-filled ridge", caption: "AI-generated landscape study · not drone footage." },
+    story: "An aerial view offers a different scale: the road becomes a thread through ridgelines, coast, or open country. Used thoughtfully, a drone can show how a journey fits into the wider landscape.", sampleMotto: "See the whole route.", sampleUse: "For considered aerial perspectives, subject to local flight rules and permissions.", keyNotes: ["Drone model and real footage to be added", "Flight permissions depend on local rules"],
+  },
+  {
+    id: "ride-jackets", slug: "riding-jackets", name: "Riding Jackets", type: "Riding gear", category: "Ride kit", role: "Ready for changing weather", heroImage: { src: "/images/placeholders/journal-repair.webp", alt: "An illustrative riding setup after a rainy journey", caption: "AI-generated equipment study · brands and protective ratings not specified." },
+    story: "A ride can move from warm sun to cold air before the next stop. Layers and accessories help make room for those changes, while the right protective kit always depends on the rider and conditions.", sampleMotto: "Prepare for the weather, then go.", sampleUse: "A home for riding layers, practical accessories, and changing-weather essentials.", keyNotes: ["Brands and models to be confirmed", "Choose certified protection for your own fit and conditions"],
   },
 ];
