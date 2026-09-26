@@ -234,7 +234,7 @@ export default function HomePage() {
                 </h2>
               </div>
               <Link
-                href="/archive"
+                href="/atlas"
                 className="group flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#aba59c] hover:text-[#FAF9F6] transition-colors py-1"
               >
                 <span>Explore the visual archive</span>
@@ -256,7 +256,7 @@ export default function HomePage() {
                 />
                 <div className="flex items-baseline justify-between pt-1 text-xs font-mono text-[#736e65]">
                   <Link
-                    href={`/archive/${archiveItems[0].slug}`}
+                    href={`/atlas/${archiveItems[0].slug}`}
                     className="text-lg font-serif text-[#FAF9F6] hover:text-[#c4a482] transition-colors"
                   >
                     {archiveItems[0].title}
@@ -279,7 +279,7 @@ export default function HomePage() {
                 />
                 <div className="flex items-baseline justify-between pt-1 text-xs font-mono text-[#736e65]">
                   <Link
-                    href={`/archive/${archiveItems[1].slug}`}
+                    href={`/atlas/${archiveItems[1].slug}`}
                     className="text-lg font-serif text-[#FAF9F6] hover:text-[#c4a482] transition-colors"
                   >
                     {archiveItems[1].title}
@@ -302,7 +302,7 @@ export default function HomePage() {
                 />
                 <div className="flex items-baseline justify-between pt-1 text-xs font-mono text-[#736e65]">
                   <Link
-                    href={`/archive/${archiveItems[2].slug}`}
+                    href={`/atlas/${archiveItems[2].slug}`}
                     className="text-lg font-serif text-[#FAF9F6] hover:text-[#c4a482] transition-colors"
                   >
                     {archiveItems[2].title}
@@ -324,7 +324,7 @@ export default function HomePage() {
                 />
                 <div className="flex items-baseline justify-between pt-1 text-xs font-mono text-[#736e65]">
                   <Link
-                    href={`/archive/${archiveItems[3].slug}`}
+                    href={`/atlas/${archiveItems[3].slug}`}
                     className="text-lg font-serif text-[#FAF9F6] hover:text-[#c4a482] transition-colors"
                   >
                     {archiveItems[3].title}
@@ -338,7 +338,7 @@ export default function HomePage() {
 
             <div className="mt-10 flex flex-col gap-4 border-t border-[#201e1b] pt-6 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-sm text-[#a8a195]">Follow a place through its photographs—or try to recognize it from one frame.</p>
-              <Link href="/archive#photo-guessing-game" className="inline-flex min-h-11 items-center gap-2 text-[10px] font-mono uppercase tracking-[0.18em] text-[#c4a482] hover:text-[#f5f3ef]">
+              <Link href="/atlas#photo-guessing-game" className="inline-flex min-h-11 items-center gap-2 text-[10px] font-mono uppercase tracking-[0.18em] text-[#c4a482] hover:text-[#f5f3ef]">
                 Play Where in the World? <span aria-hidden="true">→</span>
               </Link>
             </div>

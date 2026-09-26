@@ -29,10 +29,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `${item.title} — Archive · Saraswat Mishra`,
-    description: item.note || item.image.caption || "Visual memory frame from Saraswat Mishra's archive.",
+    title: `${item.title} — Atlas · Saraswat Mishra`,
+    description: item.note || item.image.caption || "Visual memory frame from Saraswat Mishra's atlas.",
     openGraph: {
-      title: `${item.title} — Archive · Saraswat Mishra`,
+      title: `${item.title} — Atlas · Saraswat Mishra`,
       description: item.note || item.image.caption,
       type: "article",
     },
@@ -58,11 +58,11 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
           {/* Top Return Navigation */}
           <div className="mb-8 sm:mb-12 md:mb-16">
             <Link
-              href="/archive"
+              href="/atlas"
               className="group inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-[#736e65] hover:text-[#FAF9F6] transition-colors py-2 -ml-2 px-2"
             >
               <span className="text-[#c4a482] group-hover:-translate-x-1 transition-transform">←</span>
-              <span>All Archive Frames</span>
+              <span>All Atlas Frames</span>
             </Link>
           </div>
 
@@ -177,18 +177,17 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
             {/* Footer Metadata */}
             <footer className="pt-6 border-t border-[#1c1a18] flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#5c574f] uppercase tracking-wider">
               <div>Filed under {item.category}</div>
-              {item.coordinates && <div>Coordinates: {item.coordinates}</div>}
             </footer>
           </article>
 
           {/* Sequential Navigation: Previous / Next Frame */}
           <nav
-            aria-label="Archive frames navigation"
+            aria-label="Atlas frames navigation"
             className="mt-12 sm:mt-16 md:mt-24 pt-8 sm:pt-10 border-t border-[#201e1b] grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 text-xs font-mono tracking-wider uppercase"
           >
             {prevItem ? (
               <Link
-                href={`/archive/${prevItem.slug}`}
+                href={`/atlas/${prevItem.slug}`}
                 className="group flex flex-col space-y-1.5 p-4 rounded-sm border border-transparent hover:border-[#1e1c1a] hover:bg-[#0c0b0a] transition-all"
               >
                 <div className="flex items-center gap-2 text-[10px] text-[#736e65]">
@@ -206,7 +205,7 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
 
             {nextItem ? (
               <Link
-                href={`/archive/${nextItem.slug}`}
+                href={`/atlas/${nextItem.slug}`}
                 className="group flex flex-col space-y-1.5 p-4 rounded-sm border border-transparent hover:border-[#1e1c1a] hover:bg-[#0c0b0a] transition-all sm:text-right sm:items-end"
               >
                 <div className="flex items-center gap-2 text-[10px] text-[#736e65]">
@@ -226,10 +225,10 @@ export default async function ArchiveStoryPage({ params }: PageProps) {
           {/* Quiet Center Return */}
           <div className="mt-10 sm:mt-12 text-center">
             <Link
-              href="/archive"
+              href="/atlas"
               className="inline-block py-2 px-3 text-xs font-mono uppercase tracking-widest text-[#736e65] hover:text-[#FAF9F6] transition-colors"
             >
-              Back to Visual Archive
+              Back to Atlas
             </Link>
           </div>
         </FadeIn>

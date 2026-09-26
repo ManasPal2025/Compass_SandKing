@@ -66,7 +66,7 @@ export interface ArchiveItem {
   category: ArchiveCategory;
   date?: string;
   location: string;
-  coordinates?: string; // Text representation e.g. "19.8135° N, 85.8312° E"
+  country?: string; // Matching TravelDestination.country
   geo?: ArchiveGeo;     // Extensible foundation for future map layer
   image: {
     src: string;

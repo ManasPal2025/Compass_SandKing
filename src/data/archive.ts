@@ -21,6 +21,7 @@ export const archiveItems: ArchiveItem[] = [
     title: "Coastal Ridge Pass",
     category: "Roads",
     location: "Coastal road",
+    country: "Australia",
     image: {
       src: "/images/placeholders/hero_road.jpg",
       alt: "Empty winding asphalt road cutting through misty hills at dawn",
@@ -42,6 +43,7 @@ export const archiveItems: ArchiveItem[] = [
     title: "Forest Single Track",
     category: "Nature",
     location: "Pine forest",
+    country: "Japan",
     image: {
       src: "/images/placeholders/archive_trail.jpg",
       alt: "Unpaved forest track through tall pine trees in morning mist",
@@ -63,6 +65,7 @@ export const archiveItems: ArchiveItem[] = [
     title: "Mountain Saddle",
     category: "Machines",
     location: "Mountain pass",
+    country: "Switzerland",
     image: {
       src: "/images/placeholders/garage_bike.jpg",
       alt: "Adventure motorcycle parked on a gravel mountain ridge overlook",
@@ -92,6 +95,7 @@ export const archiveItems: ArchiveItem[] = [
     title: "Woods Clearing",
     category: "Places",
     location: "Forest clearing",
+    country: "Czechia",
     image: {
       src: "/images/placeholders/garage_rig.jpg",
       alt: "Overland vehicle in foggy damp woods at first light",
@@ -111,6 +115,7 @@ export const archiveItems: ArchiveItem[] = [
     title: "The Fog Line",
     category: "Moments",
     location: "Low cloud",
+    country: "New Zealand",
     image: {
       src: "/images/placeholders/archive_trail.jpg",
       alt: "A split-second moment where cloud cover meets the forest edge",
@@ -130,6 +135,7 @@ export const archiveItems: ArchiveItem[] = [
     title: "Pass Summit Approach",
     category: "Roads",
     location: "Highland road",
+    country: "Australia",
     image: {
       src: "/images/placeholders/hero_road.jpg",
       alt: "Road surface and shoulder gradient approaching the mountain summit",
